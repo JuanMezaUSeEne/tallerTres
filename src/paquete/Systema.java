@@ -76,7 +76,8 @@ public class Systema {
 	            
 	    	    }
 	    	    break;
-	    	    
+	    	
+	            
             default:
 	            System.out.println("linea ["+ inicioTipo + "] = "+ linea[inicioTipo] + ". el formato es invalido, se omite");
 	            formato = 1;

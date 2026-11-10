@@ -49,14 +49,64 @@ public class Main {
 		
 		
 		while(!op1.equals("6")) {
-		op1 =menuSelect("1) Jugar un minijuego,2) Ver catálogo de monstruos,3) Ver historial de la sesión,4) Ver ranking de jugadores,5) Terminar sesión,6) Salir", "0","opcion no valida, intente de nuevo");
-		System.out.println("aqui se imprime algo");
-			switch (op1){
-				case "5":
-					sesion();
-					break;
+			
+			System.out.println();System.out.println("------ MENÚ PRINCIPAL ("+ "nombre del jugadore que mas rato voy a poner"+") ------");
+			
+			op1 =menuSelect("1) Jugar un minijuego,2) Ver catálogo de monstruos,3) Ver historial de la sesión,4) Ver ranking de jugadores,5) Terminar sesión,6) Salir", "0","opcion no valida, intente de nuevo");
+			
+				switch (op1){
+					case "1":
+						System.out.println();System.out.println("------ MINIJUEGOS ------");
+						String op2 = menuSelect("1) Carrera del Cementerio   "+"[PENDIENTE]"+",2) Caza de Calabazas        "+"[PENDIENTE]"+",3) Lanzamiento de Lápidas   "+"[PENDIENTE]"+",4) Sobrevivir al Amanecer   "+"[PENDIENTE]"+",0) Volver", "0","[!] opcion fuera de rango, intente nuevamente");
+						switch(op2) {
+							case "1":
+								break;
+							case "2":
+								break;
+							case "3":
+								break;
+							case "4":
+								break;
+							case "0":
+								break;
+							default:
+								break;
+						}	
+							//saliendo de un while que comprobara que el minijuego no este jugado
+						
+						System.out.println("Elige el monstruo en el que te transformaras:");
+						
+						String op3 = menuSelect("1) Zombi      | Vida 100 | Vel 20 | Fue 70 | Res 60 | Mordida 90,2) Momia      | Vida 120 | Vel 30 | Fue 45 | Res 85 | Vendajes 180,3) HombreLobo | Vida 110 | Vel 60 | Fue 90 | Res 50 | Ferocidad 75 | Luna 4,0) Volver", "0", "error fuera de rango, intentelo de nuevo");
+							
+						break;//break de op1 case "1"
 					
-			}
+					case "2":
+						System.out.println(); System.out.println("------ HISTORIAL DE LA SESIÓN ------");
+						
+						break;//break de op1 case "2"
+						
+					case "3":
+						
+						break;//break de op1 case "3"
+					case "4":
+						System.out.println("------ RANKING ------");
+						
+						//for para mostrar un ranking
+						System.out.println();
+						break;
+					case "5":
+						System.out.println("sesion terminada. Puntaje total: "+ "aqui va el puntaje"+" puntos:");
+						
+						if(true) {
+							System.out.println("No superaste tu récord ("+7600+"). ¡Suerte para la próxima!");
+						}else {
+							System.out.println("terrible choro ahora si te paseaste tu record antiguo con "+ 0+ " puntos.");
+						}
+						
+						sesion();
+						break;
+						
+				}
 			
 		}
 		
@@ -77,13 +127,14 @@ public class Main {
 		    for(i = 1; i<=largoLista;i++){
 		        System.out.println(lista[i-1]);
 		    }
+		    System.out.print("> ");
 		    opcion = sc.nextLine().strip();
 		    for (i = 1;i<largoLista+1;i++){
 		    	
 		    	if( opcion.equals(String.valueOf(i))|| opcion.equals(salida)){
-		        	
+		        	//System.out.println(opcion+ salida+ opcion.equals(salida));
 		        	comprobador = true;
-		            break;
+		            return opcion;
 		        }
 		        
 		    }
@@ -92,6 +143,7 @@ public class Main {
 		        
 		    	System.out.println(mensajeError);
 		    }
+		    
 	    }while(comprobador == false);
 
 	    return opcion;
@@ -105,8 +157,15 @@ public class Main {
 			nom = in.nextLine();
 			if(nom.equals("")) {
 				System.out.println("el nombre no puede ser vacio, intentelo de nuevo");
+			}else if(buscar(nom) != -1) {
+				String persona = "";
+				System.out.println("Bienvenido de vuelta "+ persona);
 			}
 		}
+	}
+	
+	public static int buscar(String objetivo) {
+		return -1;
 	}
 	
 }

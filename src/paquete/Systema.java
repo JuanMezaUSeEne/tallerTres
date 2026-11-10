@@ -1,8 +1,11 @@
 package paquete;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Systema {
 	
-	
+	private static List<Jugador> jugadores = new ArrayList<>();
 	
 	
 	
@@ -15,7 +18,7 @@ public class Systema {
 		
 		
 	    int formato;
-	    int[] aux;
+	    int[] aux = {-1};
 	    int formato2;
 	    
 	    switch(linea[inicioTipo]){
@@ -84,7 +87,10 @@ public class Systema {
 	            formato2 = inicioTipo +formato;
 	            aux = analisisdatos(linea, inicioTipo,formato2);
             break;
-	    }
+	    }//CERRANDO EL SWITCH
+	    
+	    
+	    
 	    aux = new int[3];
 	    //System.out.println(aux.length);
 	    
@@ -135,12 +141,41 @@ public class Systema {
 	    
 	}
 	
+	
+	
+	//este AnalisisLinea es para la carga de jugadores
+	
+	
+	public static void AnalisisLinea(String[] linea, int inicioTipo, String parametroExtraquesolosirveparahacerlasobrecargadeparametrosequisde) {
+		System.out.println("se esta iniciando el otro"+linea.length +" "+ inicioTipo +" "+(linea.length - inicioTipo >= 2));
+		if(linea.length - inicioTipo >= 2) {
+			try {
+				
+				System.out.println(linea[inicioTipo]+" "+linea[inicioTipo+1]);
+				String nombreJ = linea[inicioTipo];
+				int puntos = Integer.valueOf(linea[inicioTipo+1]);
+				Jugador player = new Jugador(nombreJ, puntos);
+				jugadores.add(player);
+				
+				
+			}catch(NumberFormatException e){
+				System.out.println("esta malo, se omite.");
+			}
+			AnalisisLinea(linea, inicioTipo+2, "si");
+		}
+	}
+	
+	
+	
+	
 	public static boolean registroJu(String nombre) {
 		//por ahora no se hace nada, luego se implementara el metodo para leer y agregar registro
 		return true;
 	}
 	
-	
+	public List<Jugador> getlista(){
+		return jugadores;
+	}
 	
 	
 	//prueba de los metodos
@@ -157,4 +192,7 @@ public class Systema {
 	    AnalisisLinea(b,0);
 	}
 	*/
+	
+	
 }
+

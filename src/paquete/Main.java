@@ -28,7 +28,7 @@ public class Main {
 		
 		Archivo arch1 = new Archivo(r1);
 		while(arch1.getLectura().hasNextLine()){
-			arch1.li();
+			s.AnalisisLinea(arch1.li(), 0 ,"si");
 			
 			
 		}
@@ -92,6 +92,18 @@ public class Main {
 						System.out.println("------ RANKING ------");
 						
 						//for para mostrar un ranking
+						
+						for(int i = 0;i < s.getlista().size();i++) {
+							String nomAux = s.getlista().get(i).getNombre();
+							int puntajeAux = s.getlista().get(i).getPuntaje();
+							System.out.print(i+1+". "+ nomAux);
+							
+							
+							for(int u = 0; u <(15-nomAux.length());u++) {System.out.print(" "); };
+							System.out.println(puntajeAux);
+						}
+						
+						
 						System.out.println();
 						break;
 					case "5":

@@ -24,7 +24,7 @@ public class Archivo  {
 
 	public String[] li() throws IOException {
 		linea = lectura.nextLine();
-		System.out.println(linea);
+		//System.out.println(linea);
 		return linea.split(";");
 		
 	}

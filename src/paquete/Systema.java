@@ -12,33 +12,42 @@ public class Systema {
 	}
 	public static void AnalisisLinea(String[] linea, int inicioTipo) {
 	    //System.out.println("se inicia el metodo");
+		
+		
 	    int formato;
 	    int[] aux;
 	    int formato2;
 	    
 	    switch(linea[inicioTipo]){
 	        case "Zombi": 
-	            System.out.println("se va a ejecutar el metodo analisisdatos() con zombies");
+	            //System.out.println("se va a ejecutar el metodo analisisdatos() con zombies");
 	            formato = 6;
 	            
 	            formato2 = inicioTipo +formato;
 	    	    
 	    	   if(inicioTipo+formato <= linea.length) { 
 		            aux = analisisdatos(linea, inicioTipo,formato2);
-		    	    System.out.println(aux);
+		    	    //System.out.println(aux);
+		            
+		            System.out.println("largo de aux"+ aux.length);
+	        		if(aux.length == formato) {
+	        			System.out.println("si esto sale en pantalla se cumple el formato");
+	        		}
+	            
+		            
 	    	   }
 	    	    
 	            break;
 	            
 	            
 	        case "Vampiro":
-	            System.out.println("se inicia con vampiro");
+	            //System.out.println("se inicia con vampiro");
 	            formato = 7;
 	            formato2 = inicioTipo +formato;
 	    	    
 	            if(inicioTipo+formato <= linea.length) { 
-	            aux = analisisdatos(linea, inicioTipo,formato2);
-	    	    System.out.println(aux);
+	            	aux = analisisdatos(linea, inicioTipo,formato2);
+	            	//System.out.println(aux);
 	    	    }
 	    	    
 	            break;
@@ -47,8 +56,8 @@ public class Systema {
 	        	formato2 = inicioTipo +formato;
 	    	    
 	        	if(inicioTipo+formato <= linea.length) { 
-	            aux = analisisdatos(linea, inicioTipo,formato2);
-	    	    System.out.println(aux);
+	        		aux = analisisdatos(linea, inicioTipo,formato2);
+	        		//System.out.println(aux);
 	    	    }
 	    	    
 	        	break;
@@ -57,8 +66,14 @@ public class Systema {
 	        	formato2 = inicioTipo +formato;
 	    	    
 	        	if(inicioTipo+formato <= linea.length) { 
-	            aux = analisisdatos(linea, inicioTipo,formato2);
-	    	    System.out.println(aux);
+	        		aux = analisisdatos(linea, inicioTipo,formato2);
+	        		//System.out.println(aux);
+	        		System.out.println("largo de aux"+ aux.length);
+	        		if(aux.length == formato) {
+	        			System.out.println("si esto sale en pantalla se cumple el formato");
+	        		}
+	            
+	            
 	    	    }
 	    	    break;
 	    	    
@@ -70,26 +85,39 @@ public class Systema {
             break;
 	    }
 	    aux = new int[3];
-	    System.out.println(aux.length);
+	    //System.out.println(aux.length);
 	    
 	    if(linea.length > formato2){
-	        System.out.println("aqui se inicia de nuevo");
+	        //System.out.println("aqui se inicia de nuevo");
 	        AnalisisLinea(linea,formato2);
 	    }
-	    System.out.println("se termino de ejecutar el metodo");
+	    //System.out.println("se termino de ejecutar el metodo");
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static int[] analisisdatos(String[] linea,int inicio, int largoFormato){
 	    
-	    int[] lista = new int[largoFormato+1];
+	    int[] lista = new int[largoFormato];
 	    
 	    try{
-	        System.out.println("aqui va desde "+ (inicio+1)+ " a "+ largoFormato+" aqui se ve que estan comparando "+ largoFormato+" "+ linea.length+ (largoFormato< linea.length));
+	        //System.out.println("aqui va desde "+ (inicio+1)+ " a "+ largoFormato+" aqui se ve que estan comparando "+ largoFormato+" "+ linea.length+ (largoFormato<= linea.length));
             
-            if(largoFormato< linea.length){
+	    	
+	    	//se comprueba si la linea tiene menos indices que los que corresponden al formato de cada monstruo
+            if(largoFormato<= linea.length){
                 lista[largoFormato-1] = 1;
                 for(int a = inicio +1 ; a<largoFormato; a++){
-                    System.out.println("dentro del for"+linea[a]);
+                    //System.out.println(a+" "+linea[a]);
                     lista[a] = Integer.valueOf(linea[a]);
+                    
             }
             }else{
                 int ju = Integer.valueOf("aqui estoy forzando el error para saltar al catch");
@@ -97,13 +125,22 @@ public class Systema {
             
         }catch(NumberFormatException e){
             System.out.println("el formato es invalido");
+            lista = new int[1]; //con esto se hace que la comprobacion de que lo que devuelve el metodo no es informacion suficiente para iniciar el constructor en el metodo AnalisisLinea()
             return lista;
 
         }
-        System.out.println("si se pudo");
+        //System.out.println(lista[0]); System.out.println(lista[1]); System.out.println(lista[2]); System.out.println(lista[3]); System.out.println(lista[4]); System.out.println(lista[5]); System.out.println(lista[6]); 
         return lista;
 	    
 	}
+	
+	public static boolean registroJu(String nombre) {
+		//por ahora no se hace nada, luego se implementara el metodo para leer y agregar registro
+		return true;
+	}
+	
+	
+	
 	
 	//prueba de los metodos
 	

@@ -5,12 +5,15 @@ Juan Meza Alvarez
 Profesor Alejandro Paolini
 
 1.- EXCPLICACION GENERAL
+----------------------------------------------
 
-Para realizar las tareas asignadas en el taller se estructurara el programa dividiendo la mayoria de tareas en diferentes clases, usando el main principalmente para desplegar el menu y dar las instrucciones al resto de clases de que datos procesar, principalmente a una clase Systema, que se encargara de almacenar y procesar todos los datos recolectados en el main. 
+Para realizar las tareas asignadas en el taller se estructurara el programa dividiendo la mayoria de tareas en diferentes clases, usando la clase Main principalmente para desplegar el menu y dar las instrucciones al resto de clases de que datos procesar, principalmente a una clase Systema, que se encargara de almacenar y procesar todos los datos recolectados en el main. 
 
 
 
 2.- LISTA DE CLASES:
+----------------------------------------------
+
 
 Main: iniciara el programa, desplegara el menu, recolectara los datos leidos de los archivos y enviara instrucciones a las demas clases
 
@@ -22,7 +25,7 @@ se separo la tarea de lectura y escritura de archivos en una clase separada para
 
 3.-DETALLES DE CLASES:
 ----------------------------------------------
-MAIN
+©MAIN
 
 Se inicializara la clase Systema
 
@@ -64,9 +67,8 @@ Se desplegara la funcion sesion()
 
 PARA FINALIZAR SE ESCRIBIRA EL RECORD DEL USUARIO "" write() "" de la clase archivos
 
-----------------------------------------------
 
-SYSTEMA
+©SYSTEMA
 
 La variable uso sera el objeto mounstro que sera instanciado cuando se elija que monstruo usar cuando se juegue un minijuego, todas las subclases tendran un metodo referente a hacer los calculos y desempeñarse en el minijuego de modo que no haya que especificar en el main o en sistema que hacer dependiendo de que monstruo se usara
 

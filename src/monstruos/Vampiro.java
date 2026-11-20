@@ -9,8 +9,8 @@ public class Vampiro extends monstruo{
 
     public Vampiro(String tipo, int vida, int velocidad, int fuerza, int resistencia, int VelocidadDeVuelo, int ResistenciaAlSol){
         super(tipo, vida, velocidad, fuerza, resistencia);
-        this.VelocidadDeVuelo = VelocidadDeVuelo;
-        this.ResistenciaAlSol = ResistenciaAlSol;
+        this.VelocidadDeVuelo = revisarRango(VelocidadDeVuelo, 100);
+        this.ResistenciaAlSol = revisarRango(ResistenciaAlSol, 100);
     }
 
 	public int getVelocidadDeVuelo() {

@@ -9,8 +9,9 @@ public class HombreLobo extends monstruo{
     
     public HombreLobo(String tipo, int vida, int velocidad, int fuerza, int resistencia, int Ferocidad, int FaseLunar){
         super(tipo, vida, velocidad, fuerza, resistencia);
-        this.Ferocidad = Ferocidad;
-        this.FaseLunar = FaseLunar;
+        this.Ferocidad = revisarRango(Ferocidad, 100);
+        
+        this.FaseLunar = revisarRango(FaseLunar, 4);
     }
     public int getFerocidad(){
         return Ferocidad;

@@ -8,7 +8,7 @@ public class Momia extends monstruo{
     
     public Momia(String tipo, int vida, int velocidad, int fuerza, int resistencia, int LongitudVendajes){
         super(tipo, vida, velocidad, fuerza, resistencia);
-        this.LongitudVendajes = LongitudVendajes;
+        this.LongitudVendajes = revisarRango(LongitudVendajes, 300);
     }
     
 	public int getLongitudVendajes() {

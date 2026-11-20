@@ -160,7 +160,7 @@ public class Systema {
 	        		//System.out.println(aux);
 	        		//System.out.println("largo de aux"+ aux.length);
 	        		if(aux.length == formato) {
-	        			//System.out.println("print del Zombi: "+" "+ aux[0]+" "+ aux[1]+" "+ aux[2]+" "+ aux[3]);
+	        			System.out.println("print del Hombre Lobo: "+" "+ aux[0]+" "+ aux[1]+" "+ aux[2]+" "+ aux[3]+" "+ aux[4]+" "+ aux[5]+" "+ aux[6]);
 	        			Auxm = new HombreLobo("HombreLobo", aux[1], aux[2], aux[3], aux[4],aux[5],aux[6]);
 	        		}else formato2 = aux.length + inicioTipo;
 	            

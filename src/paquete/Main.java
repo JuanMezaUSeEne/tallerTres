@@ -13,7 +13,7 @@ public class Main {
 		
 		//RUTAS: R1-ARCHIVO DE LOS JUGADORES, R2-ARCHIVO DE LOS MONSTRUOS
 		String r1 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/ayyay.txt";
-		String r2 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/Monstruos.txt";
+		String r2 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/Monstruos - copia.txt";
 		
 		Systema s = new Systema();
 		
@@ -307,7 +307,7 @@ public class Main {
 			frase +=(o+1)+ ") "+ tipodemonstruo+ " | " + mostrarOrdenado("vida",String.valueOf(vidaMonstruo),8) +" | "+ mostrarOrdenado("Vel",String.valueOf(velMonstruo),7)+" | "+ mostrarOrdenado("Fue",String.valueOf(fueMonstruo),7)+" | "+mostrarOrdenado("Res",String.valueOf(resMonstruo),7)+" | "+especiales[0]+String.valueOf(especial1);
 			
 			if (especiales.length == 2) {
-				int especial2 = s.getlista2().get(o).getEspecial1();
+				int especial2 = s.getlista2().get(o).getEspecial2();
 				frase+=" | " + especiales[1]+ String.valueOf(especial2)+",";
 			}else frase += ",";
 			

@@ -11,18 +11,20 @@ public class monstruo {
 
     public monstruo(String tipo, int vida, int velocidad, int fuerza, int resistencia){
         this.tipo = tipo;
-        this.vida = vida;
-        this.velocidad = velocidad;
-        this.fuerza = fuerza;
-        this.resistencia = resistencia;
+        
+        this.vida = revisarRango(vida, 200);
+        
+        this.velocidad = revisarRango(velocidad, 100);
+        this.fuerza = revisarRango(fuerza, 100);
+        this.resistencia = revisarRango(resistencia, 100);
         
     }
-    public void revisarRango(int objetivo, int max){
+    public int revisarRango(int objetivo, int max){
         if(objetivo >max){
-            objetivo = max;
+            return max;
         }else if(objetivo< 1){
-            objetivo = 1;
-        }
+            return 1;
+        }else {return objetivo;}
     }
     public String getTipo(){
         return tipo;

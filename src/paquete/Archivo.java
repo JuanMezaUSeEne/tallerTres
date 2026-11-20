@@ -1,5 +1,7 @@
 package paquete;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Scanner;
 import java.io.IOException;
@@ -13,11 +15,17 @@ public class Archivo  {
 
 	
 	
-	public Archivo(String ruta) throws IOException {
+	public Archivo(String ruta) throws IOException  {
 		this.ruta = ruta;
+		try {
 		this.arch = new File(ruta);
+		
 		this.lectura = new Scanner(arch);
-
+		}catch(FileNotFoundException e) {
+			System.out.println("no se encontro el archivo"+ ruta);
+			this.arch = null;
+			this.ruta = null;
+		}
 	}
 
 
@@ -78,5 +86,16 @@ public class Archivo  {
 	}
 	
 	
-	
+	public void escribir(String nombre, int Puntaje, Boolean borrar) {
+		try (BufferedWriter escribir = new BufferedWriter(new FileWriter(ruta, borrar))){
+			
+			escribir.write(nombre + ";"+Puntaje);
+			escribir.newLine();
+			System.out.println("registro añadido con exito");
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

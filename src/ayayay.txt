@@ -1,3 +1,5 @@
 Koshao;7823
 Clapt;7600
 Churrasquita;6767
+juan;0
+un;0

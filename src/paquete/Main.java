@@ -11,53 +11,79 @@ import java.io.FileWriter;
 public class Main {
 	public static void main(String[] args)throws IOException {
 		
-		
+		//RUTAS: R1-ARCHIVO DE LOS JUGADORES, R2-ARCHIVO DE LOS MONSTRUOS
 		String r1 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/ayayay.txt";
 		String r2 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/Monstruos.txt";
 		
 		Systema s = new Systema();
 		
+
+		String op1= "";
+		
+		int numa = 0;
+				
+				
 		System.out.println("Cargando archivos...");
 		
+		Archivo arch1 = new Archivo(r1);
 		Archivo arch2 = new Archivo(r2);
+		
+		if(arch1.getArch() != null && arch2.getArch() != null) {
+			while(arch1.getLectura().hasNextLine()){
+				s.AnalisisLinea(arch1.li(), 0 ,"si");
+				
+				
+			}
+		
+			
+			System.out.println("> "+s.getlista().size()+ " jugadores cargados desde "+ "NOMBRE DEL ARCHIVO"); 
+			
+		
 		while(arch2.getLectura().hasNextLine()) {
 			s.AnalisisLinea(arch2.li(), 0);
 			
 			
+
 		}
-		
-		Archivo arch1 = new Archivo(r1);
-		while(arch1.getLectura().hasNextLine()){
-			s.AnalisisLinea(arch1.li(), 0 ,"si");
-			
-			
-		}
+
+		System.out.println("> "+s.getlista2().size()+ " monstruos cargados desde "+ "NOMBRE DEL ARCHIVO");System.out.println();
+
+		numa = 0;
 		
 		
-		System.out.println("> "+"una cantidad que aun no se determina de "+ " monstruos cargados desde "+ "NOMBRE DEL ARCHIVO");
 		
-		System.out.println("> "+"una cantidad que aun no se determina de "+ " jugadores cargados desde "+ "NOMBRE DEL ARCHIVO"); System.out.println();
+		
+		
+		
+		
+		
+		
 		
 		System.out.println("=========================================");
 		System.out.println("             SPOOKY SEASON");
-		System.out.println("========================================="); System.out.println();
+		System.out.println("========================================="); 
 		
-		sesion();
+
+		String jugadorActual =sesion(s);
 		
-		String op1= "5";
 		
-		
+		//MENU ABRE=====================================================================================================
 		
 		while(!op1.equals("6")) {
 			
-			System.out.println();System.out.println("------ MENÚ PRINCIPAL ("+ "nombre del jugadore que mas rato voy a poner"+") ------");
+			String frase="";
+			s.ordenardesdeMax(s.getlista());
+			
+			
+			System.out.println();System.out.println("------ MENÚ PRINCIPAL ("+ jugadorActual+") ------");
 			
 			op1 =menuSelect("1) Jugar un minijuego,2) Ver catálogo de monstruos,3) Ver historial de la sesión,4) Ver ranking de jugadores,5) Terminar sesión,6) Salir", "0","opcion no valida, intente de nuevo");
 			
+			String op2 = "";
 				switch (op1){
 					case "1":
 						System.out.println();System.out.println("------ MINIJUEGOS ------");
-						String op2 = menuSelect("1) Carrera del Cementerio   "+"[PENDIENTE]"+",2) Caza de Calabazas        "+"[PENDIENTE]"+",3) Lanzamiento de Lápidas   "+"[PENDIENTE]"+",4) Sobrevivir al Amanecer   "+"[PENDIENTE]"+",0) Volver", "0","[!] opcion fuera de rango, intente nuevamente");
+						op2 = menuSelect("1) Carrera del Cementerio   "+"[PENDIENTE]"+",2) Caza de Calabazas        "+"[PENDIENTE]"+",3) Lanzamiento de Lápidas   "+"[PENDIENTE]"+",4) Sobrevivir al Amanecer   "+"[PENDIENTE]"+",0) Volver", "0","[!] opcion fuera de rango, intente nuevamente");
 						switch(op2) {
 							case "1":
 								break;
@@ -73,21 +99,34 @@ public class Main {
 								break;
 						}	
 							//saliendo de un while que comprobara que el minijuego no este jugado
-						
-						System.out.println("Elige el monstruo en el que te transformaras:");
-						
-						String op3 = menuSelect("1) Zombi      | Vida 100 | Vel 20 | Fue 70 | Res 60 | Mordida 90,2) Momia      | Vida 120 | Vel 30 | Fue 45 | Res 85 | Vendajes 180,3) HombreLobo | Vida 110 | Vel 60 | Fue 90 | Res 50 | Ferocidad 75 | Luna 4,0) Volver", "0", "error fuera de rango, intentelo de nuevo");
+						if(!op2.equals("0")) {
+							System.out.println("Elige el monstruo en el que te transformaras:");
 							
-						break;//break de op1 case "1"
+							 frase = ordenarMonstruos(s);
+							
+							
+							String op3 = menuSelect(frase, "0", "[!] accion no valida, intentar de nuevo"); 
+						}
+						break;//break de op1 case "1" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					
 					case "2":
-						System.out.println(); System.out.println("------ HISTORIAL DE LA SESIÓN ------");
+						System.out.println();System.out.println("largo de lista de monstruos: "+s.getlista2().size());
 						
-						break;//break de op1 case "2"
+						 frase = ordenarMonstruos(s);
+						
+						
+						op2 = menuSelect(frase, "0", "[!] accion no valida, intentar de nuevo"); 
+						
+						
+						
+						break;//break de op1 case "2"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 						
 					case "3":
+						String l = menuSelect("", "5","");
+						String prueba = s.getlista().get(Integer.valueOf(l)).getNombre();
+						System.out.println(prueba);
 						
-						break;//break de op1 case "3"
+						break;//break de op1 case "3"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					case "4":
 						System.out.println("------ RANKING ------");
 						
@@ -105,28 +144,40 @@ public class Main {
 						
 						
 						System.out.println();
-						break;
+						break;// break de op1 case "4"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					case "5":
-						System.out.println("sesion terminada. Puntaje total: "+ "aqui va el puntaje"+" puntos:");
+						
+						
+						
+						System.out.println("sesion terminada. Puntaje total: "+ s.getPlayerActual().getPuntaje()+" puntos.");
 						
 						if(true) {
 							System.out.println("No superaste tu récord ("+7600+"). ¡Suerte para la próxima!");
 						}else {
 							System.out.println("terrible choro ahora si te paseaste tu record antiguo con "+ 0+ " puntos.");
 						}
-						
-						sesion();
-						break;
+						for(int i = 0; i< s.getlista().size(); i++) {
+							String elnombre =s.getlista().get(i).getNombre();
+							int elpuntaje = s.getlista().get(i).getPuntaje();
+							if(i==0) {
+								arch1.escribir(elnombre, elpuntaje, false);
+
+							}else {
+								arch1.escribir(elnombre, elpuntaje, true);
+							}
+						}
+						jugadorActual =sesion(s);
+						break;//break de op1 case"5"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 						
 				}
-			
-		}
+			}//MENU CIERRA==================================================================================================================================================
+		}else System.out.println("no se encontraron los archivos. finalizando programa...");
 		
 		
 		
 	}
 
-	
+	//METODOS--------------------------------------------------------------------------------------------------------------------------------------------
 	
 	public static String menuSelect(String textos, String salida, String mensajeError){
 	    Scanner sc = new Scanner(System.in);
@@ -161,23 +212,109 @@ public class Main {
 	    return opcion;
 	}
 	
-	public static void sesion() {
+	
+	
+	
+	
+	
+	public static String sesion(Systema s) {
 		Scanner in = new Scanner(System.in);
 		String nom = "";
 		while(nom.equals("")) {
 			System.out.print("Ingrese su nombre de usuario: ");
-			nom = in.nextLine();
+			nom = in.nextLine().strip();
+			int lugarnom =buscar(nom, s);
+			
 			if(nom.equals("")) {
 				System.out.println("el nombre no puede ser vacio, intentelo de nuevo");
-			}else if(buscar(nom) != -1) {
-				String persona = "";
-				System.out.println("Bienvenido de vuelta "+ persona);
+			}else if(lugarnom != -1) {
+				String persona = s.getlista().get(lugarnom).getNombre();
+				int puntaje = s.getlista().get(lugarnom).getPuntaje();
+				s.setPlayerActual(s.getlista().get(lugarnom));
+				System.out.println("Bienvenido de vuelta "+ persona+ " tu puntaje es: "+ puntaje); System.out.println();
+				return persona;
+			}else {
+				s.ingresarJugador(nom);
+				System.out.println("Usuario registrado con exito eskereeeeee"); System.out.println();
+				
 			}
+		}
+		return nom;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public static int buscar(String objetivo, Systema s) {
+		boolean comprobador = false;
+		int i= 0;
+		for( i = 0;i < s.getlista().size();i++) {
+			String nomAux = s.getlista().get(i).getNombre();
+			int puntajeAux = s.getlista().get(i).getPuntaje();
+			if(nomAux.equals(objetivo)) {
+				comprobador = true;
+				break;
+			}
+			
+		}
+		if(comprobador == true) {
+			return i;
+		}else {
+			return -1;
+	
 		}
 	}
 	
-	public static int buscar(String objetivo) {
-		return -1;
+	
+	
+	
+	
+	
+	
+	
+	
+	public static String ordenarMonstruos(Systema s) {
+		String frase = "";
+		for (int o = 0; o<s.getlista2().size(); o++) {
+			
+			String tipodemonstruo = s.getlista2().get(o).getTipo();
+			int vidaMonstruo = s.getlista2().get(o).getVida();
+			int velMonstruo = s.getlista2().get(o).getVelocidad();
+			int fueMonstruo = s.getlista2().get(o).getFuerza();
+			int resMonstruo = s.getlista2().get(o).getResistencia();
+			String[] especiales = s.getlista2().get(o).getEspecial();
+			int especial1 = s.getlista2().get(o).getEspecial1();
+			
+			
+			
+			frase +=(o+1)+ ") "+ tipodemonstruo+ " | " + mostrarOrdenado("vida",String.valueOf(vidaMonstruo),8) +" | "+ mostrarOrdenado("Vel",String.valueOf(velMonstruo),7)+" | "+ mostrarOrdenado("Fue",String.valueOf(fueMonstruo),7)+" | "+mostrarOrdenado("Res",String.valueOf(resMonstruo),7)+" | "+especiales[0]+String.valueOf(especial1);
+			
+			if (especiales.length == 2) {
+				int especial2 = s.getlista2().get(o).getEspecial1();
+				frase+=" | " + especiales[1]+ String.valueOf(especial2)+",";
+			}else frase += ",";
+			
+			
+		}
+		frase += "0) volver";
+		
+		return frase;
 	}
 	
+	
+	
+	
+	
+	
+	public static String mostrarOrdenado(String frase1, String frase2, int espaciomax){
+	    String finall ="";
+	    String inicio =frase1+ " "+ frase2;
+	    while (inicio.length() < espaciomax){
+	        inicio+= " ";
+	    }
+	    return inicio;
+	}
 }

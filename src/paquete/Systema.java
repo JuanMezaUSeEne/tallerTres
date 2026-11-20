@@ -8,17 +8,47 @@ import monstruos.Momia;
 import monstruos.Vampiro;
 import monstruos.Zombi;
 import monstruos.monstruo;
+import subclasesMinijuegos.Caceria;
+import subclasesMinijuegos.Carrera;
+import subclasesMinijuegos.Lanzamiento;
+import subclasesMinijuegos.Sobrevivir;
 
 public class Systema {
 	
 	private static List<Jugador> jugadores = new ArrayList<>();
 	private static List<monstruo> monstruos = new ArrayList<>();
 	private static Jugador playerActual;
+	private static List<String> historial = new ArrayList<>();
+	
+	private static Minijuego m1= new Carrera();
+	private static Minijuego m2= new Caceria();
+	private static Minijuego m3= new Lanzamiento();
+	private static Minijuego m4= new Sobrevivir();
+	
+	
+	private static Minijuego[] minijuegos = {m1,m2,m3,m4};
+	
 	
 	
 	public Systema() {
 		
 	}
+	
+	
+	
+	public static void ingresarJugador(String nombreJ) {
+    	playerActual = new Jugador(nombreJ, 0);
+		jugadores.add(playerActual);
+    }
+
+	public static void setPlayerActual(Jugador playerActual) {
+		Systema.playerActual = playerActual;
+	}
+
+	public static Jugador getPlayerActual() {
+		return playerActual;
+	}
+	
 	
 	public static boolean registroJu(String nombre) {
 		//por ahora no se hace nada, luego se implementara el metodo para leer y agregar registro
@@ -32,6 +62,15 @@ public class Systema {
 	public List<monstruo> getlista2(){
 		return monstruos;
 	}
+	
+	public List<String> getlista3(){
+		return historial;
+	}
+	
+	public Minijuego[] verMinijuegos() {
+		return minijuegos;
+	}
+	
 	
 	
 	
@@ -243,18 +282,7 @@ public class Systema {
         lista.set(b, aux);
     }
     
-    public static void ingresarJugador(String nombreJ) {
-    	playerActual = new Jugador(nombreJ, 0);
-		jugadores.add(playerActual);
-    }
-
-	public static void setPlayerActual(Jugador playerActual) {
-		Systema.playerActual = playerActual;
-	}
-
-	public static Jugador getPlayerActual() {
-		return playerActual;
-	}
+    
 	
 	//prueba de los metodos
 	
@@ -270,7 +298,11 @@ public class Systema {
 	    AnalisisLinea(b,0);
 	}
 	*/
-	
+	public void jugarMinijuego(int numerodelMinijuego, int indicemonstruo) {
+		System.out.println(numerodelMinijuego+" "+monstruos.get(indicemonstruo-1).getTipo()+ " "+(numerodelMinijuego) );
+		
+		monstruos.get(indicemonstruo-1).accept(minijuegos[numerodelMinijuego-1]);
+	}
 	
 }
 

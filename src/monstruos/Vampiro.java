@@ -1,5 +1,7 @@
 package monstruos;
 
+import las_interfaces.VisitorMinijuego;
+
 public class Vampiro extends monstruo{
     private int VelocidadDeVuelo;
     private int ResistenciaAlSol;
@@ -33,5 +35,10 @@ public class Vampiro extends monstruo{
 	public int getEspecial2(){
         return getResistenciaAlSol();
     }
+	
+	@Override
+    public void accept(VisitorMinijuego mini) {
+    	mini.visitar(this);
+	}
 	
 }

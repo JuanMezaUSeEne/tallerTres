@@ -1,5 +1,7 @@
 package monstruos;
 
+import las_interfaces.VisitorMinijuego;
+
 public class monstruo {
     private String tipo;
     private int vida;
@@ -65,4 +67,7 @@ public class monstruo {
         return 0;
     }
     
+	public void accept(VisitorMinijuego mini) {
+		
+	}
 }

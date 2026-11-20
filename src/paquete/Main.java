@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args)throws IOException {
 		
 		//RUTAS: R1-ARCHIVO DE LOS JUGADORES, R2-ARCHIVO DE LOS MONSTRUOS
-		String r1 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/ayayay.txt";
+		String r1 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/ayyay.txt";
 		String r2 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/Monstruos.txt";
 		
 		Systema s = new Systema();
@@ -28,15 +28,18 @@ public class Main {
 		Archivo arch1 = new Archivo(r1);
 		Archivo arch2 = new Archivo(r2);
 		
-		if(arch1.getArch() != null && arch2.getArch() != null) {
+		if(arch1.getArch() != null) {
 			while(arch1.getLectura().hasNextLine()){
 				s.AnalisisLinea(arch1.li(), 0 ,"si");
 				
 				
 			}
+		}else {System.out.println("registros de jugadores no encontrados, iniciando sin marcador...");}
 		
-			
-			System.out.println("> "+s.getlista().size()+ " jugadores cargados desde "+ "NOMBRE DEL ARCHIVO"); 
+		System.out.println("> "+s.getlista().size()+ " jugadores cargados desde "+ "NOMBRE DEL ARCHIVO"); 
+		
+		
+		if(arch2.getArch() != null) {
 			
 		
 		while(arch2.getLectura().hasNextLine()) {
@@ -100,12 +103,17 @@ public class Main {
 						}	
 							//saliendo de un while que comprobara que el minijuego no este jugado
 						if(!op2.equals("0")) {
+							System.out.println(Integer.valueOf(op2));
 							System.out.println("Elige el monstruo en el que te transformaras:");
 							
 							 frase = ordenarMonstruos(s);
 							
 							
-							String op3 = menuSelect(frase, "0", "[!] accion no valida, intentar de nuevo"); 
+							String op3 = menuSelect(frase, "0", "[!] accion no valida, intentar de nuevo");
+							
+							if(!op3.equals("0")){
+								s.jugarMinijuego(Integer.valueOf(op2), Integer.valueOf(op3));
+							}
 						}
 						break;//break de op1 case "1" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					
@@ -122,10 +130,15 @@ public class Main {
 						break;//break de op1 case "2"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 						
 					case "3":
-						String l = menuSelect("", "5","");
-						String prueba = s.getlista().get(Integer.valueOf(l)).getNombre();
-						System.out.println(prueba);
 						
+						if(s.getlista3().size()== 0) {
+							System.out.println(); System.out.println("No hay minijuegos jugados aun, tiene que jugar alguno.");
+							
+						}else {
+							for(int i = 0; i< s.getlista3().size();i++) {
+								System.out.println(s.getlista3().get(i)); 
+							}
+						}
 						break;//break de op1 case "3"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					case "4":
 						System.out.println("------ RANKING ------");
@@ -166,6 +179,7 @@ public class Main {
 								arch1.escribir(elnombre, elpuntaje, true);
 							}
 						}
+						System.out.println("");
 						jugadorActual =sesion(s);
 						break;//break de op1 case"5"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 						

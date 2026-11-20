@@ -1,5 +1,7 @@
 package monstruos;
 
+import las_interfaces.VisitorMinijuego;
+
 public class Zombi extends monstruo{
     private int Fmordida;
     private String[] especial = {"Mordida"};
@@ -21,4 +23,9 @@ public class Zombi extends monstruo{
     public int getEspecial1(){
         return getmordida();
     }
+    
+    @Override
+    public void accept(VisitorMinijuego mini) {
+    	mini.visitar(this);
+	}
 }

@@ -1,5 +1,7 @@
 package monstruos;
 
+import las_interfaces.VisitorMinijuego;
+
 public class Momia extends monstruo{
     private int LongitudVendajes;
     private String[] especial = {"Vendajes "};
@@ -23,4 +25,8 @@ public class Momia extends monstruo{
 	public int getEspecial1(){
         return getLongitudVendajes();
     }
+	@Override
+    public void accept(VisitorMinijuego mini) {
+    	mini.visitar(this);
+	}
 }

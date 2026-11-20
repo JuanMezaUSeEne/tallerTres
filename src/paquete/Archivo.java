@@ -22,7 +22,7 @@ public class Archivo  {
 		
 		this.lectura = new Scanner(arch);
 		}catch(FileNotFoundException e) {
-			System.out.println("no se encontro el archivo"+ ruta);
+			//System.out.println("no se encontro el archivo"+ ruta);
 			this.arch = null;
 			this.ruta = null;
 		}

@@ -1,5 +1,7 @@
 package monstruos;
 
+import las_interfaces.VisitorMinijuego;
+
 public class HombreLobo extends monstruo{
     private int Ferocidad;
     private int FaseLunar;
@@ -31,4 +33,8 @@ public class HombreLobo extends monstruo{
     public int getEspecial2(){
         return getFaseLunar();
     }
+    @Override
+    public void accept(VisitorMinijuego mini) {
+    	mini.visitar(this);
+	}
 }

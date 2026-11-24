@@ -50,10 +50,19 @@ En la funcion se creara un vector con el método split para determinar la cantid
 -ordenarMonstruos() 
 Este metodo devolvera un dato tipo String de los monstruos que tiene Systema en la ArrayList con sus atributos, todos ordenados de acuerdo al formato que se usa para desplegar el menu en el metodo menuSelect ().
 
-Primero declarara una variable String llamada frase, esta sera la variable que devolvera el metodo, Reunira todos los objetos de la ArrayList de monstruos, asignando sus atributos a variables dentro de un ciclo for que esta determinado por el largo de la ArrayList, con estos datos se iran casteando a string y se añadiran en cada iteracion yb 
+Primero declarara una variable String llamada frase, esta sera la variable que devolvera el metodo, Reunira todos los objetos de la ArrayList de monstruos, asignando sus atributos a variables dentro de un ciclo for que esta determinado por el largo de la ArrayList, con estos datos se iran casteando a string y se añadiran en cada iteracion con un formato identico al ejemplo de ejecución, para que todas las casillas queden alineadas sin importar el largo los datos, esos seran procesados dentro del metodo mostrarOrdenado() al añadirse en frase.
+
+este proceso incluia la primera habilidad especial que tienen todos los monstruos, invocando el metodo getEspecial() llamando el primer indice de su vector String especial
+
+antes de terminar el primer ciclo se verificara si el monstruo tiene una segunda habilidad con el largo del vector string[] especial, de modo que si tiene mas de 2 indices se agregara el nombre de la segunda habilidad y su valor numerico convertido a string y ordenado con mostrarOrdenado()
+
+para terminar cada ciclo se le agregara despues de todos los atributos una coma, para asi separarlos de acuerdo al formato de menuSelect()
 
 
-Con un switch se identificara que hacer con las distintas opciones desplegabdo sus respectivos menus con opciones.
+luego de cerrar el ciclo for se le agregara otro valor String "0)volver" para cerrar el menu, y con eso se devuelve el valor de frase terminando el metodo.
+
+
+Con un switch se identificara que hacer con las distintas opciones desplegando sus respectivos menus con opciones.
 
 Opcion 1:
 Desplegar menu + parametros que se convertiran a String "" menuSelect("Carrera del cementerio,Caza de calabazas,Lanzamiento de lapidas,Sobrevivir al amanecer,Volver", 0) ""

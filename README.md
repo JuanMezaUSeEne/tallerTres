@@ -40,14 +40,14 @@ sino: Systema creara una nueva instancia de jugador y añadira el objeto al Arra
 
 Se despliega el primer menu "" menuSelect("Jugar un minijuego,Ver catálogo de monstruos,Ver historial de la sesión,Ver ranking de jugadores,Terminar sesión,Salir", 6) "" que estara dentro de un while, haciendo que cuando se salga del while finaliza el programa ingresando la opcion 6 en el menu
 
-menuSelect() 
+- menuSelect() 
 desplegara el menu con todas las opciones a elegir y pedira escoger alguna opcion en la consola, controlara errores de opciones no validas y regresara un valor String al finalizar.
 
 Recibira un string como parametro con todas las opciones separadas por una coma y el valor string de la opcion que sera para salir de este menu, para terminar devolvera la opcion seleccionada. 
 
 En la funcion se creara un vector con el método split para determinar la cantidad de opciones que hay en el menu, con esa cantidad se desplegara mediante un for todas las opciones y se pedirá con un Scanner ingresar la opcion del menu que se quiera escojer y con otro for se comprobara si la opcion ingresada esta dentro del intervalo de numeros de opciones o si es la opcion salir, estando estos 2 ciclos dentro de un ciclo do while, si en el ciclo de comprobacion la opcion ingresada coincide con alguna de las disponibles (incluyendo la de salir), el método finalizara devolviendo la opcion ingresada, de lo contrario terminara el primer ciclo imprimiendo un mensaje de error pidiendo ingresar una opcion valida e iniciara de nuevo el ciclo while
 
--ordenarMonstruos() 
+- ordenarMonstruos() 
 Este metodo devolvera un dato tipo String de los monstruos que tiene Systema en la ArrayList con sus atributos, todos ordenados de acuerdo al formato que se usa para desplegar el menu en el metodo menuSelect ().
 
 Primero declarara una variable String llamada frase, esta sera la variable que devolvera el metodo, Reunira todos los objetos de la ArrayList de monstruos, asignando sus atributos a variables dentro de un ciclo for que esta determinado por el largo de la ArrayList, con estos datos se iran casteando a string y se añadiran en cada iteracion con un formato identico al ejemplo de ejecución, para que todas las casillas queden alineadas sin importar el largo los datos, esos seran procesados dentro del metodo mostrarOrdenado() al añadirse en frase.

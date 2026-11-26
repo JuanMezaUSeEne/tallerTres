@@ -9,6 +9,7 @@ public class monstruo {
     private int velocidad;
     private int fuerza;
     private int resistencia;
+	private boolean usado = false;
 
     public monstruo(String tipo, int vida, int velocidad, int fuerza, int resistencia){
         this.tipo = tipo;
@@ -72,5 +73,8 @@ public class monstruo {
     
 	public double accept(VisitorMinijuego mini) {
 		return 0;
+	}
+	public void setUsado(){
+		usado = true;
 	}
 }

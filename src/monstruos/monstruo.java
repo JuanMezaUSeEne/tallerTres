@@ -4,6 +4,7 @@ import las_interfaces.VisitorMinijuego;
 
 public class monstruo {
     private String tipo;
+    
     private int vida;
     private int velocidad;
     private int fuerza;
@@ -69,7 +70,7 @@ public class monstruo {
         return 0;
     }
     
-	public void accept(VisitorMinijuego mini) {
-		
+	public double accept(VisitorMinijuego mini) {
+		return 0;
 	}
 }

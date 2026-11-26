@@ -1,8 +1,10 @@
 package monstruos;
 
+import las_interfaces.Mordedor;
 import las_interfaces.VisitorMinijuego;
+import las_interfaces.Volador;
 
-public class Vampiro extends monstruo{
+public class Vampiro extends monstruo implements Mordedor, Volador{
     private int VelocidadDeVuelo;
     private int ResistenciaAlSol;
     private String[] especial = { "Vuelo ","Sol "};
@@ -37,8 +39,20 @@ public class Vampiro extends monstruo{
     }
 	
 	@Override
-    public void accept(VisitorMinijuego mini) {
-    	mini.visitar(this);
+	public double accept(VisitorMinijuego mini) {
+    	return mini.visitar(this);
+	}
+
+	@Override
+	public String volar() {
+		// TODO Auto-generated method stub
+		return "Volar";
+	}
+
+	@Override
+	public String morder() {
+		// TODO Auto-generated method stub
+		return "Morder";
 	}
 	
 }

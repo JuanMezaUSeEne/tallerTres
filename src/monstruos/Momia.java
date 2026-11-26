@@ -1,8 +1,10 @@
 package monstruos;
 
+import las_interfaces.Furioso;
+import las_interfaces.Regenerable;
 import las_interfaces.VisitorMinijuego;
 
-public class Momia extends monstruo{
+public class Momia extends monstruo implements Regenerable, Furioso{
     private int LongitudVendajes;
     private String[] especial = {"Vendajes "};
     
@@ -26,7 +28,19 @@ public class Momia extends monstruo{
         return getLongitudVendajes();
     }
 	@Override
-    public void accept(VisitorMinijuego mini) {
-    	mini.visitar(this);
+	public double accept(VisitorMinijuego mini) {
+    	return mini.visitar(this);
+	}
+
+	@Override
+	public String enfurecerse() {
+		// TODO Auto-generated method stub
+		return "Enfurecerse";
+	}
+
+	@Override
+	public String regenerarse() {
+		// TODO Auto-generated method stub
+		return "Regenerarse";
 	}
 }

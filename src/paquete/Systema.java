@@ -3,6 +3,10 @@ package paquete;
 import java.util.ArrayList;
 import java.util.List;
 
+import las_interfaces.Furioso;
+import las_interfaces.Mordedor;
+import las_interfaces.Regenerable;
+import las_interfaces.Volador;
 import monstruos.HombreLobo;
 import monstruos.Momia;
 import monstruos.Vampiro;
@@ -298,10 +302,59 @@ public class Systema {
 	    AnalisisLinea(b,0);
 	}
 	*/
-	public void jugarMinijuego(int numerodelMinijuego, int indicemonstruo) {
+    public String ordenarhabilidades(int indicemonstruo) {
+    	String frase = "";
+    	
+    	for (int i = 0; i < monstruos.size(); i++) {
+    	    System.out.println("Índice " + i + ": " + monstruos.get(i));
+    	}
+    	System.out.println("se estan viendo las habilidades de un "+ monstruos.get(indicemonstruo));
+    	
+    	monstruo monstruoaux = monstruos.get(indicemonstruo-1);
+    	if(monstruoaux instanceof Furioso) {
+    		frase += ((Furioso) monstruoaux).enfurecerse()+",";
+    	}
+    	if(monstruoaux instanceof Mordedor) {
+    		frase += ((Mordedor) monstruoaux).morder()+",";
+    	}
+    	if(monstruoaux instanceof Regenerable) {
+    		frase+= ((Regenerable) monstruoaux).regenerarse()+",";
+    	}
+    	if(monstruoaux instanceof Volador) {
+    		frase += ((Volador) monstruoaux).volar()+",";
+    	}
+    	String[] frase2 = frase.split(",");
+    	frase = "";
+    	for(int i = 0; i<frase2.length; i++) {
+    		frase += String.valueOf(i+1)+") "+ frase2[i]+",";
+    	}
+    	frase+= "0) No usar una habilidad, >";
+    	return frase;
+    }
+    
+	public void jugarMinijuego(int numerodelMinijuego, int indicemonstruo, String habilidadUsada) {
 		System.out.println(numerodelMinijuego+" "+monstruos.get(indicemonstruo-1).getTipo()+ " "+(numerodelMinijuego) );
 		
-		monstruos.get(indicemonstruo-1).accept(minijuegos[numerodelMinijuego-1]);
+		double multiplicador=1;
+		
+		double potencial= monstruos.get(indicemonstruo-1).accept(minijuegos[numerodelMinijuego-1]);
+		
+		System.out.println("el potencial es: "+ potencial);
+		
+		
+		String habilidadpremiada = minijuegos[numerodelMinijuego-1].getSkillPremiada().strip();
+		System.out.println("esto tendria que ser la habilidadUsada: "+habilidadUsada+" "+minijuegos[numerodelMinijuego-1].getSkillPremiada()+" "+(habilidadUsada.equalsIgnoreCase(habilidadpremiada.strip())));
+		String habilidadUsadaLimpia = habilidadUsada.strip();
+		String habilidadPremiadaLimpia = habilidadpremiada.strip();
+
+		if (habilidadUsadaLimpia.equalsIgnoreCase(habilidadPremiadaLimpia)) {
+		    multiplicador = 1.5;
+		}
+		
+		int puntaje = (int) Math.round(potencial * 10 * multiplicador );
+		
+		System.out.println("puntaje obtenido: "+ puntaje);
+		
 	}
 	
 }

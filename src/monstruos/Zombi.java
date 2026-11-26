@@ -1,8 +1,10 @@
 package monstruos;
 
+import las_interfaces.Mordedor;
+import las_interfaces.Regenerable;
 import las_interfaces.VisitorMinijuego;
 
-public class Zombi extends monstruo{
+public class Zombi extends monstruo implements Mordedor, Regenerable{
     private int Fmordida;
     private String[] especial = {"Mordida "};
 
@@ -25,7 +27,17 @@ public class Zombi extends monstruo{
     }
     
     @Override
-    public void accept(VisitorMinijuego mini) {
-    	mini.visitar(this);
+    public double accept(VisitorMinijuego mini) {
+    	return mini.visitar(this);
+	}
+	@Override
+	public String regenerarse() {
+		// TODO Auto-generated method stub
+		return "Regenerarse";
+	}
+	@Override
+	public String morder() {
+		// TODO Auto-generated method stub
+		return "Morder";
 	}
 }

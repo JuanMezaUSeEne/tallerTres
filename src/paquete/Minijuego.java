@@ -12,6 +12,7 @@ public class Minijuego implements VisitorMinijuego{
 	private double multiplicador;
 	private boolean jugado = false;
 	private String registro;
+	private String skillPremiada;
 	public Minijuego() {
 	}
 	public int getPuntaje() {
@@ -45,6 +46,14 @@ public class Minijuego implements VisitorMinijuego{
 		this.registro = registro;
 	}
 	
+	
+	
+	public String getSkillPremiada() {
+		return skillPremiada;
+	}
+	public void setSkillPremiada(String skillPremiada) {
+		this.skillPremiada = skillPremiada;
+	}
 	public double visitar(Zombi zombi) { return 0;};
 	public double visitar(Vampiro vampiro) { return 0;};
 	public double visitar(Momia momia) { return 0;};

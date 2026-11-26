@@ -5,7 +5,7 @@ package paquete;
 public class Jugador {
 	private String nombre;
 	private int puntaje;
-	
+	private int puntajeActual;
 	public Jugador(String nombre, int puntaje) {
 		this.nombre = nombre;
 		this.puntaje = puntaje;
@@ -23,5 +23,14 @@ public class Jugador {
 		this.puntaje = puntaje;
 	}
 	
+	public int getPuntajeActual() {
+		return puntajeActual;
+	}
+	public void setPuntajeActual(int puntaje) {
+		this.puntaje = puntaje;
+	}
 	
 }
+
+	
+

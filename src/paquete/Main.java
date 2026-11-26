@@ -12,8 +12,8 @@ public class Main {
 	public static void main(String[] args)throws IOException {
 		
 		//RUTAS: R1-ARCHIVO DE LOS JUGADORES, R2-ARCHIVO DE LOS MONSTRUOS
-		String r1 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/ayyay.txt";
-		String r2 = "C:/Users/Juan/eclipse-workspace/tallerTres/src/Monstruos - copia.txt";
+		String r1 = "Jugadores.txt";
+		String r2 = "Monstruos.txt";
 		
 		Systema s = new Systema();
 		
@@ -111,9 +111,18 @@ public class Main {
 							
 							String op3 = menuSelect(frase, "0", "[!] accion no valida, intentar de nuevo");
 							
+							String habilidades = s.ordenarhabilidades(Integer.valueOf(op3));
+							 
+							
+							System.out.println();System.out.println("¿Quieres usar alguna habilidad?");
+							
+							String op4 = menuSelect(habilidades, "0", "[!] accion no valida, intentar de nuevo");
+							String habilidadUsada = habilidades.split(",")[Integer.valueOf(op4)-1].split("\\)")[1];
+							
 							if(!op3.equals("0")){
-								s.jugarMinijuego(Integer.valueOf(op2), Integer.valueOf(op3));
+								s.jugarMinijuego(Integer.valueOf(op2), Integer.valueOf(op3), habilidadUsada);
 							}
+							
 						}
 						break;//break de op1 case "1" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					

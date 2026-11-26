@@ -77,4 +77,7 @@ public class monstruo {
 	public void setUsado(){
 		usado = true;
 	}
+	public boolean getUsado(){
+		return usado;
+	}
 }

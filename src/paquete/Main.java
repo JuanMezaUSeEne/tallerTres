@@ -86,23 +86,23 @@ public class Main {
 				switch (op1){
 					case "1":
 						System.out.println();System.out.println("------ MINIJUEGOS ------");
-						op2 = menuSelect("1) Carrera del Cementerio   "+"[PENDIENTE]"+",2) Caza de Calabazas        "+"[PENDIENTE]"+",3) Lanzamiento de Lápidas   "+"[PENDIENTE]"+",4) Sobrevivir al Amanecer   "+"[PENDIENTE]"+",0) Volver", "0","[!] opcion fuera de rango, intente nuevamente");
-						switch(op2) {
-							case "1":
-								break;
-							case "2":
-								break;
-							case "3":
-								break;
-							case "4":
-								break;
-							case "0":
-								break;
-							default:
-								break;
-						}	
-							//saliendo de un while que comprobara que el minijuego no este jugado
+
+						String menuMinijuegos = "1) Carrera del Cementerio   "+s.verMinijuegos()[0].getJugado()+",2) Caza de Calabazas        "+s.verMinijuegos()[1].getJugado()+",3) Lanzamiento de Lápidas   "+s.verMinijuegos()[2].getJugado()+",4) Sobrevivir al Amanecer   "+s.verMinijuegos()[3].getJugado()+",0) Volver";
+						
+						
+						
+						do{
+							op2 = menuSelect(menuMinijuegos, "0","[!] opcion fuera de rango, intente nuevamente");
+
+							System.out.println("el minijuego esta jugado "+s.verMinijuegos()[Integer.valueOf(op2)-1].getJugado()+" "+!s.verMinijuegos()[Integer.valueOf(op2)].getJugado().equals("[PENDIENTE]"));
+
+							if(!s.verMinijuegos()[Integer.valueOf(op2)].getJugado().equals("[PENDIENTE]")){
+									System.out.println("[!] Ya jugaste "+ s.verMinijuegos()[0].getNombre()+ " en esta sesion.");
+							}
+						}while(!s.verMinijuegos()[Integer.valueOf(op2)-1].getJugado().equals("[PENDIENTE]"));
+							
 						if(!op2.equals("0")) {
+							
 							System.out.println(Integer.valueOf(op2));
 							System.out.println("Elige el monstruo en el que te transformaras:");
 							
@@ -111,17 +111,24 @@ public class Main {
 							
 							String op3 = menuSelect(frase, "0", "[!] accion no valida, intentar de nuevo");
 							
-							String habilidades = s.ordenarhabilidades(Integer.valueOf(op3));
-							 
 							
-							System.out.println();System.out.println("¿Quieres usar alguna habilidad?");
-							
-							String op4 = menuSelect(habilidades, "0", "[!] accion no valida, intentar de nuevo");
-							String habilidadUsada = habilidades.split(",")[Integer.valueOf(op4)-1].split("\\)")[1];
 							
 							if(!op3.equals("0")){
+								String habilidades = s.ordenarhabilidades(Integer.valueOf(op3));
+							 
+							
+								System.out.println();System.out.println("¿Quieres usar alguna habilidad?");
+							
+								String op4 = menuSelect(habilidades, "0", "[!] accion no valida, intentar de nuevo");
+								String habilidadUsada = ""; 
+								if(!op4.equals("0")){
+								habilidadUsada = habilidades.split(",")[Integer.valueOf(op4)-1].split("\\)")[1];
+								}
 								s.jugarMinijuego(Integer.valueOf(op2), Integer.valueOf(op3), habilidadUsada);
+								
 							}
+							
+								
 							
 						}
 						break;//break de op1 case "1" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -301,8 +308,12 @@ public class Main {
 	
 	public static String ordenarMonstruos(Systema s) {
 		String frase = "";
+		int numeroMenu = 0;
+		
 		for (int o = 0; o<s.getlista2().size(); o++) {
 			
+			if(s.getlista2().get(o).getUsado() == false){
+
 			String tipodemonstruo = s.getlista2().get(o).getTipo();
 			int vidaMonstruo = s.getlista2().get(o).getVida();
 			int velMonstruo = s.getlista2().get(o).getVelocidad();
@@ -313,15 +324,18 @@ public class Main {
 			
 			
 			
-			frase +=(o+1)+ ") "+ tipodemonstruo+ " | " + mostrarOrdenado("vida",String.valueOf(vidaMonstruo),8) +" | "+ mostrarOrdenado("Vel",String.valueOf(velMonstruo),7)+" | "+ mostrarOrdenado("Fue",String.valueOf(fueMonstruo),7)+" | "+mostrarOrdenado("Res",String.valueOf(resMonstruo),7)+" | "+especiales[0]+String.valueOf(especial1);
+			frase +=(o+1-numeroMenu)+ ") "+ tipodemonstruo+ " | " + mostrarOrdenado("vida",String.valueOf(vidaMonstruo),8) +" | "+ mostrarOrdenado("Vel",String.valueOf(velMonstruo),7)+" | "+ mostrarOrdenado("Fue",String.valueOf(fueMonstruo),7)+" | "+mostrarOrdenado("Res",String.valueOf(resMonstruo),7)+" | "+especiales[0]+String.valueOf(especial1);
 			
 			if (especiales.length == 2) {
 				int especial2 = s.getlista2().get(o).getEspecial2();
 				frase+=" | " + especiales[1]+ String.valueOf(especial2)+",";
 			}else frase += ",";
-			
+			}else{
+				numeroMenu++;
+			}
 			
 		}
+		
 		frase += "0) volver";
 		
 		return frase;

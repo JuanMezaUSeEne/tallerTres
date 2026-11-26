@@ -14,6 +14,10 @@ private String nombre= "Caceria de Calabazas";
 		super();
 		setSkillPremiadaSub();
 	}
+
+	public String getNombre(){
+		return nombre;
+	}
 	
 	public void setSkillPremiadaSub() {
 		super.setSkillPremiada("Morder");

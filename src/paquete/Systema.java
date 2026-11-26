@@ -75,7 +75,7 @@ public class Systema {
 		return minijuegos;
 	}
 	
-	
+	//METODOS NO GETTERS/SETTERS=================================================================================
 	
 	
 	public static void AnalisisLinea(String[] linea, int inicioTipo) {
@@ -247,7 +247,7 @@ public class Systema {
 	
 	
 	
-	//este AnalisisLinea es para la carga de jugadores
+	//
 	
 	
 	public static void AnalisisLinea(String[] linea, int inicioTipo, String parametroExtraquesolosirveparahacerlasobrecargadeparametrosequisde) {
@@ -268,8 +268,8 @@ public class Systema {
 			AnalisisLinea(linea, inicioTipo+2, "si");
 		}
 	}
-	
-	
+	//
+	//
 	public static void ordenardesdeMax(List<Jugador> lalista){
         for(int i =0; i < lalista.size()-1; i++){
             for(int o =i; o < lalista.size(); o++){
@@ -279,13 +279,13 @@ public class Systema {
             }
         }
     }
-    
+    //
     public static void intercambiar(List<Jugador> lista, int a, int b){
         Jugador aux = lista.get(a);
         lista.set(a, lista.get(b));
         lista.set(b, aux);
     }
-    
+    //
     
 	
 	//prueba de los metodos
@@ -331,10 +331,16 @@ public class Systema {
     	frase+= "0) No usar una habilidad, >";
     	return frase;
     }
-    
-	public void jugarMinijuego(int numerodelMinijuego, int indicemonstruo, String habilidadUsada) {
+    //
+	public boolean jugarMinijuego(int numerodelMinijuego, int indicemonstruo, String habilidadUsada) {
 		System.out.println(numerodelMinijuego+" "+monstruos.get(indicemonstruo-1).getTipo()+ " "+(numerodelMinijuego) );
 		
+		if(!minijuegos[numerodelMinijuego-1].getJugado().equals("[PENDIENTE]")){
+			return false;
+		}else{
+
+		
+
 		double multiplicador=1;
 		
 		double potencial= monstruos.get(indicemonstruo-1).accept(minijuegos[numerodelMinijuego-1]);
@@ -354,8 +360,16 @@ public class Systema {
 		int puntaje = (int) Math.round(potencial * 10 * multiplicador );
 		
 		System.out.println("puntaje obtenido: "+ puntaje);
-		
+
+		monstruos.get(indicemonstruo-1).setUsado();
+
+		minijuegos[numerodelMinijuego-1].setJugado(puntaje);
+
+		return true;
+		}
 	}
+	//
+	
 	
 }
 

@@ -10,11 +10,16 @@ public class Minijuego implements VisitorMinijuego{
 	private int puntaje;
 	private double potencial ;
 	private double multiplicador;
-	private boolean jugado = false;
+	private String jugado = "[PENDIENTE]";
 	private String registro;
 	private String skillPremiada;
 	public Minijuego() {
 	}
+
+	public String getNombre(){
+		return "nada";
+	}
+
 	public int getPuntaje() {
 		return puntaje;
 	}
@@ -33,11 +38,11 @@ public class Minijuego implements VisitorMinijuego{
 	public void setMultiplicador(double multiplicador) {
 		this.multiplicador = multiplicador;
 	}
-	public boolean isJugado() {
-		return jugado;
+	public void setJugado(int puntaje) {
+		jugado = "[JUGADO - "+ String.valueOf(puntaje)+ " pts]";
 	}
-	public void setJugado(boolean jugado) {
-		this.jugado = jugado;
+	public String getJugado() {
+		return jugado;
 	}
 	public String getRegistro() {
 		return registro;

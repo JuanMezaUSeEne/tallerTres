@@ -27,7 +27,7 @@ public class Jugador {
 		return puntajeActual;
 	}
 	public void setPuntajeActual(int puntaje) {
-		this.puntaje = puntaje;
+		puntajeActual = puntaje;
 	}
 	
 }

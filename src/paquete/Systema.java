@@ -164,7 +164,7 @@ public class Systema {
 	        		//System.out.println(aux);
 	        		//System.out.println("largo de aux"+ aux.length);
 	        		if(aux.length == formato) {
-	        			System.out.println("print del Hombre Lobo: "+" "+ aux[0]+" "+ aux[1]+" "+ aux[2]+" "+ aux[3]+" "+ aux[4]+" "+ aux[5]+" "+ aux[6]);
+	        			//System.out.println("print del Hombre Lobo: "+" "+ aux[0]+" "+ aux[1]+" "+ aux[2]+" "+ aux[3]+" "+ aux[4]+" "+ aux[5]+" "+ aux[6]);
 	        			Auxm = new HombreLobo("HombreLobo", aux[1], aux[2], aux[3], aux[4],aux[5],aux[6]);
 	        		}else formato2 = aux.length + inicioTipo;
 	            
@@ -328,28 +328,25 @@ public class Systema {
     	for(int i = 0; i<frase2.length; i++) {
     		frase += String.valueOf(i+1)+") "+ frase2[i]+",";
     	}
-    	frase+= "0) No usar una habilidad, >";
+    	frase+= "0) No usar una habilidad";
     	return frase;
     }
     //
-	public boolean jugarMinijuego(int numerodelMinijuego, int indicemonstruo, String habilidadUsada) {
-		System.out.println(numerodelMinijuego+" "+monstruos.get(indicemonstruo-1).getTipo()+ " "+(numerodelMinijuego) );
+	public String jugarMinijuego(int numerodelMinijuego, int indicemonstruo, String habilidadUsada) {
+		//System.out.println(numerodelMinijuego+" "+monstruos.get(indicemonstruo-1).getTipo()+ " "+(numerodelMinijuego) );
 		
-		if(!minijuegos[numerodelMinijuego-1].getJugado().equals("[PENDIENTE]")){
-			return false;
-		}else{
-
 		
-
+		
+		
 		double multiplicador=1;
 		
 		double potencial= monstruos.get(indicemonstruo-1).accept(minijuegos[numerodelMinijuego-1]);
 		
-		System.out.println("el potencial es: "+ potencial);
+		//System.out.println("el potencial es: "+ potencial);
 		
 		
 		String habilidadpremiada = minijuegos[numerodelMinijuego-1].getSkillPremiada().strip();
-		System.out.println("esto tendria que ser la habilidadUsada: "+habilidadUsada+" "+minijuegos[numerodelMinijuego-1].getSkillPremiada()+" "+(habilidadUsada.equalsIgnoreCase(habilidadpremiada.strip())));
+		//System.out.println("esto tendria que ser la habilidadUsada: "+habilidadUsada+" "+minijuegos[numerodelMinijuego-1].getSkillPremiada()+" "+(habilidadUsada.equalsIgnoreCase(habilidadpremiada.strip())));
 		String habilidadUsadaLimpia = habilidadUsada.strip();
 		String habilidadPremiadaLimpia = habilidadpremiada.strip();
 
@@ -365,11 +362,38 @@ public class Systema {
 
 		minijuegos[numerodelMinijuego-1].setJugado(puntaje);
 
-		return true;
+		desplazarHastaAtras(indicemonstruo);
+
+
+		playerActual.setPuntajeActual(playerActual.getPuntajeActual()+ puntaje);
+		return "el potencial es: "+ String.valueOf(potencial)+"\n puntaje obtenido: "+ String.valueOf(puntaje);
+		}
+	
+	//
+	public void desplazarHastaAtras(int indice) {
+		for( int i = indice-1; i< monstruos.size()-1; i++) {
+			//System.out.println(i);
+			monstruo aux = monstruos.get(i);
+			monstruos.set(i, monstruos.get(i+1));
+			monstruos.set(i+1, aux);
+			//System.out.println(monstruos.get(0).getTipo()+", "+monstruos.get(1).getTipo()+", "+monstruos.get(2).getTipo()+", "+monstruos.get(3).getTipo()+", "+monstruos.get(4).getTipo());
+				
+			
 		}
 	}
-	//
+
+	public static void reiniciarSesion(){
+		List<String> historial = new ArrayList<>();
 	
+		
+		
+		
+		minijuegos = new Minijuego[] { new Carrera(), new Caceria(), new Lanzamiento(), new Sobrevivir() };
+
+		for(int i =0; i <monstruos.size(); i++){
+			monstruos.get(i).ResetUsado();
+		}
+	}
 	
 }
 

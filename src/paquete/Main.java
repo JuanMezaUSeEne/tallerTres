@@ -36,7 +36,7 @@ public class Main {
 			}
 		}else {System.out.println("registros de jugadores no encontrados, iniciando sin marcador...");}
 		
-		System.out.println("> "+s.getlista().size()+ " jugadores cargados desde "+ "NOMBRE DEL ARCHIVO"); 
+		System.out.println("> "+s.getlista().size()+ " jugadores cargados desde "+ r1); 
 		
 		
 		if(arch2.getArch() != null) {
@@ -49,7 +49,7 @@ public class Main {
 
 		}
 
-		System.out.println("> "+s.getlista2().size()+ " monstruos cargados desde "+ "NOMBRE DEL ARCHIVO");System.out.println();
+		System.out.println("> "+s.getlista2().size()+ " monstruos cargados desde "+ r2);System.out.println();
 
 		numa = 0;
 		
@@ -80,7 +80,7 @@ public class Main {
 			
 			System.out.println();System.out.println("------ MENÚ PRINCIPAL ("+ jugadorActual+") ------");
 			
-			op1 =menuSelect("1) Jugar un minijuego,2) Ver catálogo de monstruos,3) Ver historial de la sesión,4) Ver ranking de jugadores,5) Terminar sesión,6) Salir", "0","opcion no valida, intente de nuevo");
+			op1 =menuSelect("1) Jugar un minijuego,2) Ver catálogo de monstruos,3) Ver historial de la sesión,4) Ver ranking de jugadores,5) Terminar sesión,6) Salir", "6","opcion no valida, intente de nuevo");
 			
 			String op2 = "";
 				switch (op1){
@@ -94,11 +94,12 @@ public class Main {
 						do{
 							op2 = menuSelect(menuMinijuegos, "0","[!] opcion fuera de rango, intente nuevamente");
 
-							System.out.println("el minijuego esta jugado "+s.verMinijuegos()[Integer.valueOf(op2)-1].getJugado()+" "+!s.verMinijuegos()[Integer.valueOf(op2)].getJugado().equals("[PENDIENTE]"));
-
-							if(!s.verMinijuegos()[Integer.valueOf(op2)].getJugado().equals("[PENDIENTE]")){
+							
+							if(op2.equals("0")) {
+								break;
+							}else if(!s.verMinijuegos()[Integer.valueOf(op2)].getJugado().equals("[PENDIENTE]")){
 									System.out.println("[!] Ya jugaste "+ s.verMinijuegos()[0].getNombre()+ " en esta sesion.");
-							}
+							} 
 						}while(!s.verMinijuegos()[Integer.valueOf(op2)-1].getJugado().equals("[PENDIENTE]"));
 							
 						if(!op2.equals("0")) {
@@ -106,7 +107,7 @@ public class Main {
 							System.out.println(Integer.valueOf(op2));
 							System.out.println("Elige el monstruo en el que te transformaras:");
 							
-							 frase = ordenarMonstruos(s);
+							 frase = ordenarMonstruos(s, true);
 							
 							
 							String op3 = menuSelect(frase, "0", "[!] accion no valida, intentar de nuevo");
@@ -115,17 +116,18 @@ public class Main {
 							
 							if(!op3.equals("0")){
 								String habilidades = s.ordenarhabilidades(Integer.valueOf(op3));
-							 
+								
 							
 								System.out.println();System.out.println("¿Quieres usar alguna habilidad?");
-							
+								System.out.println("imprime algo conchatumadre");
+
 								String op4 = menuSelect(habilidades, "0", "[!] accion no valida, intentar de nuevo");
 								String habilidadUsada = ""; 
 								if(!op4.equals("0")){
 								habilidadUsada = habilidades.split(",")[Integer.valueOf(op4)-1].split("\\)")[1];
 								}
-								s.jugarMinijuego(Integer.valueOf(op2), Integer.valueOf(op3), habilidadUsada);
-								
+								String resultado= s.jugarMinijuego(Integer.valueOf(op2), Integer.valueOf(op3), habilidadUsada);
+								System.out.println(resultado);
 							}
 							
 								
@@ -136,7 +138,7 @@ public class Main {
 					case "2":
 						System.out.println();System.out.println("largo de lista de monstruos: "+s.getlista2().size());
 						
-						 frase = ordenarMonstruos(s);
+						 frase = ordenarMonstruos(s, false);
 						
 						
 						op2 = menuSelect(frase, "0", "[!] accion no valida, intentar de nuevo"); 
@@ -179,15 +181,18 @@ public class Main {
 						
 						
 						System.out.println("sesion terminada. Puntaje total: "+ s.getPlayerActual().getPuntaje()+" puntos.");
-						
-						if(true) {
-							System.out.println("No superaste tu récord ("+7600+"). ¡Suerte para la próxima!");
+						int puntos;
+						System.out.println(s.getPlayerActual().getPuntajeActual()+" "+ s.getPlayerActual().getPuntaje() );
+						if(s.getPlayerActual().getPuntajeActual() <= s.getPlayerActual().getPuntaje()) {
+							puntos = s.getPlayerActual().getPuntaje();
+							System.out.println("No superaste tu récord ("+puntos+"). ¡Suerte para la próxima!");
 						}else {
 							System.out.println("terrible choro ahora si te paseaste tu record antiguo con "+ 0+ " puntos.");
+							puntos = s.getPlayerActual().getPuntajeActual();
 						}
 						for(int i = 0; i< s.getlista().size(); i++) {
 							String elnombre =s.getlista().get(i).getNombre();
-							int elpuntaje = s.getlista().get(i).getPuntaje();
+							int elpuntaje = puntos;
 							if(i==0) {
 								arch1.escribir(elnombre, elpuntaje, false);
 
@@ -195,6 +200,7 @@ public class Main {
 								arch1.escribir(elnombre, elpuntaje, true);
 							}
 						}
+						s.reiniciarSesion();
 						System.out.println("");
 						jugadorActual =sesion(s);
 						break;//break de op1 case"5"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -222,16 +228,19 @@ public class Main {
 		    }
 		    System.out.print("> ");
 		    opcion = sc.nextLine().strip();
-		    for (i = 1;i<largoLista+1;i++){
-		    	
+		    for (i = 1;i<largoLista;i++){
+		    	//System.out.println(opcion+ salida+ opcion.equals(salida));
 		    	if( opcion.equals(String.valueOf(i))|| opcion.equals(salida)){
-		        	//System.out.println(opcion+ salida+ opcion.equals(salida));
+		        	
 		        	comprobador = true;
 		            return opcion;
 		        }
 		        
 		    }
-		    if( !opcion.equals(String.valueOf(i))){
+			//System.out.println("valor de la opcion: "+ opcion+ " valor de i: "+ i+ "son iguales: "+opcion.equals(String.valueOf(i)));
+			//System.out.println(opcion+" "+ i+!opcion.equals(String.valueOf(i)));
+
+		    if( comprobador == false){
 		            
 		        
 		    	System.out.println(mensajeError);
@@ -306,30 +315,34 @@ public class Main {
 	
 	
 	
-	public static String ordenarMonstruos(Systema s) {
+	public static String ordenarMonstruos(Systema s, boolean ocultar) {
 		String frase = "";
 		int numeroMenu = 0;
 		
 		for (int o = 0; o<s.getlista2().size(); o++) {
 			
-			if(s.getlista2().get(o).getUsado() == false){
+			if(s.getlista2().get(o).getUsado().equals("sin usar") || ocultar == false){
 
-			String tipodemonstruo = s.getlista2().get(o).getTipo();
-			int vidaMonstruo = s.getlista2().get(o).getVida();
-			int velMonstruo = s.getlista2().get(o).getVelocidad();
-			int fueMonstruo = s.getlista2().get(o).getFuerza();
-			int resMonstruo = s.getlista2().get(o).getResistencia();
-			String[] especiales = s.getlista2().get(o).getEspecial();
-			int especial1 = s.getlista2().get(o).getEspecial1();
-			
-			
-			
-			frase +=(o+1-numeroMenu)+ ") "+ tipodemonstruo+ " | " + mostrarOrdenado("vida",String.valueOf(vidaMonstruo),8) +" | "+ mostrarOrdenado("Vel",String.valueOf(velMonstruo),7)+" | "+ mostrarOrdenado("Fue",String.valueOf(fueMonstruo),7)+" | "+mostrarOrdenado("Res",String.valueOf(resMonstruo),7)+" | "+especiales[0]+String.valueOf(especial1);
-			
-			if (especiales.length == 2) {
-				int especial2 = s.getlista2().get(o).getEspecial2();
-				frase+=" | " + especiales[1]+ String.valueOf(especial2)+",";
-			}else frase += ",";
+				String tipodemonstruo = s.getlista2().get(o).getTipo();
+				int vidaMonstruo = s.getlista2().get(o).getVida();
+				int velMonstruo = s.getlista2().get(o).getVelocidad();
+				int fueMonstruo = s.getlista2().get(o).getFuerza();
+				int resMonstruo = s.getlista2().get(o).getResistencia();
+				String[] especiales = s.getlista2().get(o).getEspecial();
+				int especial1 = s.getlista2().get(o).getEspecial1();
+				
+				
+				
+				frase +=(o+1-numeroMenu)+ ") "+ tipodemonstruo+ " | " + mostrarOrdenado("vida",String.valueOf(vidaMonstruo),8) +" | "+ mostrarOrdenado("Vel",String.valueOf(velMonstruo),7)+" | "+ mostrarOrdenado("Fue",String.valueOf(fueMonstruo),7)+" | "+mostrarOrdenado("Res",String.valueOf(resMonstruo),7)+" | "+especiales[0]+String.valueOf(especial1);
+				
+				if (especiales.length == 2) {
+					int especial2 = s.getlista2().get(o).getEspecial2();
+					frase+=" | " + especiales[1]+ String.valueOf(especial2);
+				}
+				if(ocultar == false){frase += " | estado: "+ s.getlista2().get(o).getUsado();}
+				frase += ",";
+					
+				
 			}else{
 				numeroMenu++;
 			}

@@ -1,4 +1,5 @@
-Koshao;7823;p
-Clapt;7600
-Churrasquita;6767
-0;d
+Koshao;1650
+Clapt;1650
+Churrasquita;1650
+j;1650
+p;1650

@@ -19,6 +19,14 @@ private String nombre= "Lanzamiento de lapidas";
 	public void setSkillPremiadaSub() {
 		super.setSkillPremiada("Regenerarse");
 	}
+
+	public String getNombre(){
+		return nombre;
+	}
+
+	public String getDescripcion(){
+		return nombre+ ": Aguanta en pie cuando salgan los primeros rayos de sol.";
+	}	
 	
 	@Override
 	public double visitar(Zombi zombi) { 

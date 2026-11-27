@@ -331,6 +331,11 @@ public class Systema {
     	return frase;
     }
     //
+
+	public Double getPotencial(int numerodelMinijuego, int indicemonstruo){
+		return monstruos.get(indicemonstruo-1).accept(minijuegos[numerodelMinijuego-1]);
+	}
+
 	public String jugarMinijuego(int numerodelMinijuego, int indicemonstruo, String habilidadUsada) {
 		//System.out.println("se esta jugando el minijuego"+ minijuegos[numerodelMinijuego-1]+ numerodelMinijuego);
 
@@ -368,8 +373,11 @@ public class Systema {
 		playerActual.setPuntajeActual(playerActual.getPuntajeActual()+ puntaje);
 
 		historial.add(minijuegos[numerodelMinijuego-1].getNombre()+ ","+ monstruos.get(indicemonstruo-1).getTipo()+ ",Habilidad: "+habilidadUsada+ ","+ String.valueOf(puntaje)+" pts");
-
-		return "el potencial es: "+ String.valueOf(potencial)+"\npuntaje obtenido: "+ String.valueOf(puntaje);
+		if(multiplicador != 1){
+			return "¡La habilidad fue efectiva!\n\n>> Puntaje obtenido: "+ String.valueOf(puntaje)+" puntos";
+		}else{
+			return "La habilidad no tuvo efecto en este minijuego\n\n>> Puntaje obtenido: "+ String.valueOf(puntaje)+" puntos";
+		}
 		}
 	
 	//

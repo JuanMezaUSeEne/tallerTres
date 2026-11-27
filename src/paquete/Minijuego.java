@@ -20,6 +20,10 @@ public class Minijuego implements VisitorMinijuego{
 		return "nada";
 	}
 
+	public String getDescripcion(){
+		return "";
+	}
+
 	public int getPuntaje() {
 		return puntaje;
 	}

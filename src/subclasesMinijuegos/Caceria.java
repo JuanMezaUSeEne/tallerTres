@@ -18,7 +18,9 @@ private String nombre= "Caceria de Calabazas";
 	public String getNombre(){
 		return nombre;
 	}
-	
+	public String getDescripcion(){
+		return nombre+ ": Muerde la mayor cantidad de calabazas del huerto en 60 segundos.";
+	}
 	public void setSkillPremiadaSub() {
 		super.setSkillPremiada("Morder");
 	}

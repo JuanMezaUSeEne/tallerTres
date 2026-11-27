@@ -24,6 +24,9 @@ public class Carrera extends Minijuego {
 		return nombre;
 	}
 
+	public String getDescripcion(){
+		return nombre+ ": Recorre el cementerio de punta a punta antes de que el sepulturero te vea.";
+	}
 
 	@Override
 	public double visitar(Zombi zombi) { 

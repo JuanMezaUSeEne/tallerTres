@@ -104,7 +104,8 @@ public class Main {
 							
 						if(!op2.equals("0")) {
 							
-							
+							System.out.println("\n"+ s.verMinijuegos()[Integer.valueOf(op2)-1].getDescripcion()+"\n");
+
 							System.out.println("Elige el monstruo en el que te transformaras:");
 							
 							 frase = ordenarMonstruos(s, true);
@@ -117,9 +118,11 @@ public class Main {
 							if(!op3.equals("0")){
 								String habilidades = s.ordenarhabilidades(Integer.valueOf(op3));
 								
+								System.out.println("\nTe comes un dulce de dudosa procedencia...\nPotencial para "+s.verMinijuegos()[Integer.valueOf(op2)-1].getNombre()+": "+ s.getPotencial(Integer.valueOf(op2),Integer.valueOf(op3)));
+
 							
 								System.out.println();System.out.println("¿Quieres usar alguna habilidad?");
-								System.out.println("imprime algo conchatumadre");
+								
 
 								String op4 = menuSelect(habilidades, "0", "[!] accion no valida, intentar de nuevo");
 								String habilidadUsada = ""; 
@@ -157,7 +160,9 @@ public class Main {
 								String[] historialaux =  s.getlista3().get(i).split(",");
 								System.out.println((i+1)+". "+mostrarOrdenado(historialaux[0],"", 26)+ "| "+ mostrarOrdenado(historialaux[1],"",11)+" | "+ mostrarOrdenado(historialaux[2],"",24)+" | "+mostrarOrdenadoReves(historialaux[3],"",8));
 							}
+							System.out.println("Puntaje acumulado: "+ s.getPlayerActual().getPuntajeActual()+ " pts");
 						}
+						
 						break;//break de op1 case "3"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					case "4":
 						System.out.println("------ RANKING ------");

@@ -18,6 +18,15 @@ public class Lanzamiento extends Minijuego{
 	public void setSkillPremiadaSub() {
 		super.setSkillPremiada("Enfurecerse");
 	}
+
+	public String getNombre(){
+		return nombre;
+	}
+
+	public String getDescripcion(){
+		return nombre+ ": Lanza una lápida lo más lejos posible.";
+	}
+	
 	
 	@Override
 	public double visitar(Zombi zombi) { 

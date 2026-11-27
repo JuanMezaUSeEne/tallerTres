@@ -20,6 +20,11 @@ public class Carrera extends Minijuego {
 		super.setSkillPremiada("Volar");
 	}
 
+	public String getNombre(){
+		return nombre;
+	}
+
+
 	@Override
 	public double visitar(Zombi zombi) { 
 		System.out.println("se ejecuto la caceria visitor en un "+ zombi.getTipo());

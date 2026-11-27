@@ -1,6 +1,7 @@
 package paquete;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import las_interfaces.Furioso;
@@ -22,7 +23,7 @@ public class Systema {
 	private static List<Jugador> jugadores = new ArrayList<>();
 	private static List<monstruo> monstruos = new ArrayList<>();
 	private static Jugador playerActual;
-	private static List<String> historial = new ArrayList<>();
+	private static List<String> historial = new LinkedList<>();
 	
 	private static Minijuego m1= new Carrera();
 	private static Minijuego m2= new Caceria();
@@ -305,10 +306,8 @@ public class Systema {
     public String ordenarhabilidades(int indicemonstruo) {
     	String frase = "";
     	
-    	for (int i = 0; i < monstruos.size(); i++) {
-    	    System.out.println("Índice " + i + ": " + monstruos.get(i));
-    	}
-    	System.out.println("se estan viendo las habilidades de un "+ monstruos.get(indicemonstruo));
+    	
+    	//System.out.println("se estan viendo las habilidades de un "+ monstruos.get(indicemonstruo));
     	
     	monstruo monstruoaux = monstruos.get(indicemonstruo-1);
     	if(monstruoaux instanceof Furioso) {
@@ -333,7 +332,8 @@ public class Systema {
     }
     //
 	public String jugarMinijuego(int numerodelMinijuego, int indicemonstruo, String habilidadUsada) {
-		//System.out.println(numerodelMinijuego+" "+monstruos.get(indicemonstruo-1).getTipo()+ " "+(numerodelMinijuego) );
+		//System.out.println("se esta jugando el minijuego"+ minijuegos[numerodelMinijuego-1]+ numerodelMinijuego);
+
 		
 		
 		
@@ -356,7 +356,7 @@ public class Systema {
 		
 		int puntaje = (int) Math.round(potencial * 10 * multiplicador );
 		
-		System.out.println("puntaje obtenido: "+ puntaje);
+		//System.out.println("puntaje obtenido: "+ puntaje);
 
 		monstruos.get(indicemonstruo-1).setUsado();
 
@@ -366,7 +366,10 @@ public class Systema {
 
 
 		playerActual.setPuntajeActual(playerActual.getPuntajeActual()+ puntaje);
-		return "el potencial es: "+ String.valueOf(potencial)+"\n puntaje obtenido: "+ String.valueOf(puntaje);
+
+		historial.add(minijuegos[numerodelMinijuego-1].getNombre()+ ","+ monstruos.get(indicemonstruo-1).getTipo()+ ",Habilidad: "+habilidadUsada+ ","+ String.valueOf(puntaje)+" pts");
+
+		return "el potencial es: "+ String.valueOf(potencial)+"\npuntaje obtenido: "+ String.valueOf(puntaje);
 		}
 	
 	//
@@ -383,7 +386,7 @@ public class Systema {
 	}
 
 	public static void reiniciarSesion(){
-		List<String> historial = new ArrayList<>();
+		historial.clear();
 	
 		
 		

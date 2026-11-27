@@ -97,14 +97,14 @@ public class Main {
 							
 							if(op2.equals("0")) {
 								break;
-							}else if(!s.verMinijuegos()[Integer.valueOf(op2)].getJugado().equals("[PENDIENTE]")){
+							}else if(!s.verMinijuegos()[Integer.valueOf(op2)-1].getJugado().equals("[PENDIENTE]")){
 									System.out.println("[!] Ya jugaste "+ s.verMinijuegos()[0].getNombre()+ " en esta sesion.");
 							} 
 						}while(!s.verMinijuegos()[Integer.valueOf(op2)-1].getJugado().equals("[PENDIENTE]"));
 							
 						if(!op2.equals("0")) {
 							
-							System.out.println(Integer.valueOf(op2));
+							
 							System.out.println("Elige el monstruo en el que te transformaras:");
 							
 							 frase = ordenarMonstruos(s, true);
@@ -154,7 +154,8 @@ public class Main {
 							
 						}else {
 							for(int i = 0; i< s.getlista3().size();i++) {
-								System.out.println(s.getlista3().get(i)); 
+								String[] historialaux =  s.getlista3().get(i).split(",");
+								System.out.println((i+1)+". "+mostrarOrdenado(historialaux[0],"", 26)+ "| "+ mostrarOrdenado(historialaux[1],"",11)+" | "+ mostrarOrdenado(historialaux[2],"",24)+" | "+mostrarOrdenadoReves(historialaux[3],"",8));
 							}
 						}
 						break;//break de op1 case "3"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -364,6 +365,14 @@ public class Main {
 	    String inicio =frase1+ " "+ frase2;
 	    while (inicio.length() < espaciomax){
 	        inicio+= " ";
+	    }
+	    return inicio;
+	}
+	public static String mostrarOrdenadoReves(String frase1, String frase2, int espaciomax){
+	    String finall ="";
+	    String inicio =frase1+ " "+ frase2;
+	    while (inicio.length() < espaciomax){
+	        inicio= " "+inicio;
 	    }
 	    return inicio;
 	}

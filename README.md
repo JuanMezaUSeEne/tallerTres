@@ -8,8 +8,9 @@ Profesor Alejandro Paolini
 ----------------------------------------------
 El proyecto divide sus clases e interfaces en 4 paquetes distintos para mayor orden, siendo "paquete" el principal donde estan las clases que manejan al resto de clases(exceptuando la super clase monstruo porque se me fue pasarla ahi y no queria arriesgarme a que el programa falle por eso pipipi)
 
-## ejecucion: desde la clase Main con el comando javac -d bin src/paquete/*.java para compilar 
-## y java -cp bin paquete.Main para iniciarlo
+## ejecucion: 
+### desde la clase Main con el comando `javac -d bin src/paquete/*.java` para compilar 
+### y `java -cp bin paquete.Main` para iniciarlo
 
 
 1.- EXPLICACION GENERAL

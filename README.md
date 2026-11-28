@@ -8,7 +8,8 @@ Profesor Alejandro Paolini
 ----------------------------------------------
 El proyecto divide sus clases e interfaces en 4 paquetes distintos para mayor orden, siendo "paquete" el principal donde estan las clases que manejan al resto de clases(exceptuando la super clase monstruo porque se me fue pasarla ahi y no queria arriesgarme a que el programa falle por eso pipipi)
 
-ejecucion: desde la clase Main 
+##ejecucion: desde la clase Main con el comando javac -d bin src/paquete/*.java para compilar 
+y java -cp bin paquete.Main para iniciarlo
 
 
 1.- EXPLICACION GENERAL
@@ -52,7 +53,13 @@ se separo la tarea de lectura y escritura de archivos en una clase separada para
 
 3.-DETALLES DE CLASES:
 ----------------------------------------------
-©MAIN
+*MAIN*
+
+###Variables 
+
+op1 op2 op3....:
+Seran las variables que desplegaran el menu y recibiran la opcion ingresada por comando
+
 
 Se inicializara la clase Systema
 
@@ -67,14 +74,14 @@ sino: Systema creara una nueva instancia de jugador y añadira el objeto al Arra
 
 Se despliega el primer menu "" menuSelect("Jugar un minijuego,Ver catálogo de monstruos,Ver historial de la sesión,Ver ranking de jugadores,Terminar sesión,Salir", 6) "" que estara dentro de un while, haciendo que cuando se salga del while finaliza el programa ingresando la opcion 6 en el menu
 
-menuSelect() 
+**menuSelect()**
 desplegara el menu con todas las opciones a elegir y pedira escoger alguna opcion en la consola, controlara errores de opciones no validas y regresara un valor String al finalizar.
 
 - Recibira un string como parametro con todas las opciones separadas por una coma y el valor string de la opcion que sera para salir de este menu, para terminar devolvera la opcion seleccionada. 
 
 - En la funcion se creara un vector con el método split para determinar la cantidad de opciones que hay en el menu, con esa cantidad se desplegara mediante un for todas las opciones y se pedirá con un Scanner ingresar la opcion del menu que se quiera escojer y con otro for se comprobara si la opcion ingresada esta dentro del intervalo de numeros de opciones o si es la opcion salir, estando estos 2 ciclos dentro de un ciclo do while, si en el ciclo de comprobacion la opcion ingresada coincide con alguna de las disponibles (incluyendo la de salir), el método finalizara devolviendo la opcion ingresada, de lo contrario terminara el primer ciclo imprimiendo un mensaje de error pidiendo ingresar una opcion valida e iniciara de nuevo el ciclo while
 
-ordenarMonstruos() 
+**ordenarMonstruos()**
 Este metodo devolvera un dato tipo String de los monstruos que tiene Systema en la ArrayList con sus atributos, todos ordenados de acuerdo al formato que se usa para desplegar el menu en el metodo menuSelect ().
 
 - Primero declarara una variable String llamada frase, esta sera la variable que devolvera el metodo, Reunira todos los objetos de la ArrayList de monstruos, asignando sus atributos a variables dentro de un ciclo for que esta determinado por el largo de la ArrayList, con estos datos se iran casteando a string y se añadiran en cada iteracion con un formato identico al ejemplo de ejecución, para que todas las casillas queden alineadas sin importar el largo los datos, esos seran procesados dentro del metodo mostrarOrdenado() al añadirse en frase.
@@ -98,7 +105,7 @@ Este metodo devolvera un dato tipo String de los monstruos que tiene Systema en 
 
 
 
-©SYSTEMA
+*SYSTEMA*
 
 La variable uso sera el objeto mounstro que sera instanciado cuando se elija que monstruo usar cuando se juegue un minijuego, todas las subclases tendran un metodo referente a hacer los calculos y desempeñarse en el minijuego de modo que no haya que especificar en el main o en sistema que hacer dependiendo de que monstruo se usara
 
@@ -108,7 +115,7 @@ AnalisisLinea( String linea, int largoLinea)
 - En caso que todo sea comprobado y se devuelva un vector con el largo correspondiente (largo 6 para zombies y momias o largo 7 para vampiros y hombres lobo), se iniciara el constructor del respectivo monstruo, luego de eso se inspeccionara si el largo de la linea es mayor al largo del monstruo creado.
 - si ese el caso se iniciara de forma recursiva nuevamente el mismo metodo pero restandole a largoLinea el largo del monstruo que hayamos creado (ej si tenemos una linea de largo 10, y en esa creamos un zombie este tiene un largo de 6, la funcion recursiva iniciara su metodo con un largo de 10-6 (es decir 4). En caso de que el analisis atrape una excepcion de formato la opcion devolvera un vector de largo 1, y no se iniciara el constructor
 
-Se tiene un segundo AnalisisLinea que se usara para leer los datos de los jugadores, este leera los archivos y ejecutara de forma similar pero en este caso al leer correctamente el formato este creara una instancia de jugador y la añadira a su arraylist de Jugador
+##Se tiene un segundo AnalisisLinea que se usara para leer los datos de los jugadores, este leera los archivos y ejecutara de forma similar pero en este caso al leer correctamente el formato este creara una instancia de jugador y la añadira a su arraylist de Jugador
 
 
 

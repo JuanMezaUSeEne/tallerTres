@@ -8,8 +8,8 @@ Profesor Alejandro Paolini
 ----------------------------------------------
 El proyecto divide sus clases e interfaces en 4 paquetes distintos para mayor orden, siendo "paquete" el principal donde estan las clases que manejan al resto de clases(exceptuando la super clase monstruo porque se me fue pasarla ahi y no queria arriesgarme a que el programa falle por eso pipipi)
 
-##ejecucion: desde la clase Main con el comando javac -d bin src/paquete/*.java para compilar 
-y java -cp bin paquete.Main para iniciarlo
+## ejecucion: desde la clase Main con el comando javac -d bin src/paquete/*.java para compilar 
+## y java -cp bin paquete.Main para iniciarlo
 
 
 1.- EXPLICACION GENERAL
@@ -55,7 +55,7 @@ se separo la tarea de lectura y escritura de archivos en una clase separada para
 ----------------------------------------------
 *MAIN*
 
-###Variables 
+### Variables 
 
 op1 op2 op3....:
 Seran las variables que desplegaran el menu y recibiran la opcion ingresada por comando
@@ -115,7 +115,7 @@ AnalisisLinea( String linea, int largoLinea)
 - En caso que todo sea comprobado y se devuelva un vector con el largo correspondiente (largo 6 para zombies y momias o largo 7 para vampiros y hombres lobo), se iniciara el constructor del respectivo monstruo, luego de eso se inspeccionara si el largo de la linea es mayor al largo del monstruo creado.
 - si ese el caso se iniciara de forma recursiva nuevamente el mismo metodo pero restandole a largoLinea el largo del monstruo que hayamos creado (ej si tenemos una linea de largo 10, y en esa creamos un zombie este tiene un largo de 6, la funcion recursiva iniciara su metodo con un largo de 10-6 (es decir 4). En caso de que el analisis atrape una excepcion de formato la opcion devolvera un vector de largo 1, y no se iniciara el constructor
 
-##Se tiene un segundo AnalisisLinea que se usara para leer los datos de los jugadores, este leera los archivos y ejecutara de forma similar pero en este caso al leer correctamente el formato este creara una instancia de jugador y la añadira a su arraylist de Jugador
+## Se tiene un segundo AnalisisLinea que se usara para leer los datos de los jugadores, este leera los archivos y ejecutara de forma similar pero en este caso al leer correctamente el formato este creara una instancia de jugador y la añadira a su arraylist de Jugador
 
 
 

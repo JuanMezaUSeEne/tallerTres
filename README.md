@@ -64,7 +64,7 @@ se separo la tarea de lectura y escritura de archivos en una clase separada para
 ----------------------------------------------
 ## MAIN
 
-Variables 
+### Variables 
 
 op1 op2 op3....:
 Seran las variables que desplegaran el menu y recibiran la opcion ingresada por comando
@@ -106,7 +106,7 @@ Este metodo devolvera un dato tipo String de los monstruos que tiene Systema en 
 
 - luego de cerrar el ciclo for se le agregara otro valor String "0)volver" para cerrar el menu, y con eso se devuelve el valor de frase terminando el metodo.
 
-**sesion**
+**sesion()**
 este metodo determinara la instancia de jugador que va a estar jugando los minijuegos.
 
 - dentro de un while pedira ingresar el nombre para que suelte error si el nombre es vacio
@@ -155,7 +155,7 @@ Este metodo calculara el puntaje final recibido al jugar el minijuego indicado c
 
 - vera si el multiplicador fue mayor de 1, significando que la habilidad usada fue efectiva, dependiendo de es9 devolvera mensajes distintos
 
-**getPotencial**
+**getPotencial()**
 calcula con el VisitorMinijuego y devuelve el potencial en forma de double(la hice porque vi que el potencial se mostraba antes de elegir los poderes y yo lo estaba haciendo de modo que se entregaba con el metodo anterior equise)
 
 **reiniciarSesion()**

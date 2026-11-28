@@ -119,7 +119,21 @@ Este metodo va a comprobar que tipo de monstruo es comparando su indice 0
 - En caso que todo sea comprobado y se devuelva un vector con el largo correspondiente (largo 6 para zombies y momias o largo 7 para vampiros y hombres lobo), se iniciara el constructor del respectivo monstruo, luego de eso se inspeccionara si el largo de la linea es mayor al largo del monstruo creado.
 - si ese el caso se iniciara de forma recursiva nuevamente el mismo metodo pero restandole a largoLinea el largo del monstruo que hayamos creado (ej si tenemos una linea de largo 10, y en esa creamos un zombie este tiene un largo de 6, la funcion recursiva iniciara su metodo con un largo de 10-6 (es decir 4). En caso de que el analisis atrape una excepcion de formato la opcion devolvera un vector de largo 1, y no se iniciara el constructor
 
-## Se tiene un segundo AnalisisLinea que se usara para leer los datos de los jugadores, este leera los archivos y ejecutara de forma similar pero en este caso al leer correctamente el formato este creara una instancia de jugador y la añadira a su arraylist de Jugador
+ 
+- Se tiene un segundo AnalisisLinea que se usara para leer los datos de los jugadores, este leera los archivos y ejecutara de forma similar pero en este caso al leer correctamente el formato este creara una instancia de jugador y la añadira a su arraylist de Jugador
 
+**jugarMinijuego()
+Este metodo calculara el puntaje final recibido al jugar el minijuego indicado con el monstruo y la habilidad indicados, devolviendo un String con los resultados dependiendo si hubo bonificacion de habilidad
 
+- Recibira de parametros int el numero de las opciones seleccionadas del minijuego, el monstruo y la habilidad correspondiente a jugar.
 
+- Se establecera el multiplicador base en 1 Y usando el patron visitor se calculara el potencial del monstruo del indice que este marcado con el parametro indicemonstruo que invocara el metodo accept, devolviendo el potencial calculado por el minijuego señalado, valor asignado a la variable potencial que declara el metodo.
+
+- Con el potencial obtenido se calculara el puntaje con la formula puntaje = Math.round(potencial × 10 × multiplicador)
+
+- Despues se cambiara el estado del monstruo que se esta usando de "sin usar" a "usado", igualmente con el minijuego que se invocara su metodo setJugado(int puntaje) el cual cambiara su estado de [PENDIENTE] a [JUGADO - puntaje pts]
+
+- Con el metodo desplazarfinal() se movera el monstruo usado hasta el ultimo indice en su arraylist, de esta forma tener agrupados al principio todos los monstruos sin usar, dejando al final todos los que hayan sido usados, asi evitar conflictos a la hora de seleccionar los monstruos disponibles en el menu
+
+**reiniciarSesion()**
+se devolvera el estado original de las 

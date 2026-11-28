@@ -23,19 +23,27 @@ se declaran 2 variables String en el main que tendran el nombre del archivo para
 Con un switch se identificara que hacer con las distintas opciones desplegando sus respectivos menus con opciones.
 
 Opcion 1:
-  la opcion
+abre el menu de minijuegos dando a elegir tambien que monstruos usar y sus habilidades
 
 Opcion 2: 
-desplegar el menu
-
-
+desplegar los monstruos con sus caracteristicas
 
 Opcion 3:
-Desplegar el menu
+Desplegar los jugadores registrados ordenados del mayor puntaje al menor
+
+Opcion 4:
+muestra los registros guardados en una Linkedlist en Systema
 
 Opcion 5:
-Se desplegara la funcion sesion()
+Se desplegara la funcion sesion() y sobreescribe el archivo de jugadores
 
+opcion 6:
+cierra el juego
+
+### como se maneja el menu
+
+
+las opciones del menu ingresadas por comando seran recibidas como string para compararlas con los numeros tambien convertidos a string, de esa forma se evita tener que controlar menos tipos de errores como ingresar letras en lugar de numeros o indexoutofbounds etc. asi tambien se asegura el programa que sea reconvertible a int la opcion ingresada
 
 
 
@@ -97,7 +105,12 @@ Este metodo devolvera un dato tipo String de los monstruos que tiene Systema en 
 
 - luego de cerrar el ciclo for se le agregara otro valor String "0)volver" para cerrar el menu, y con eso se devuelve el valor de frase terminando el metodo.
 
+**sesion**
+este metodo determinara la instancia de jugador que va a estar jugando los minijuegos.
 
+- dentro de un while pedira ingresar el nombre para que suelte error si el nombre es vacio
+- declara una variable int "lugarnom" que se le asignara el valor invocando el metodo buscar() para ver si el nombre se encuentra en la ArrayList de jugadores que tiene el sistema recorriendo sus indices, si lo encuentra devuelve el indice en el cual esta el nombre
+- asignara la instancia del jugador que esta en la sesion. En caso que no exista creara la instancia con el metodo ingresarJugador() que creara la instancia, la añadira al ArrayList de jugadores, de lo contrario referenciara la instancia con el metodo setPlayerActual() de Systema
 
 
 
@@ -122,7 +135,7 @@ Este metodo va a comprobar que tipo de monstruo es comparando su indice 0
  
 - Se tiene un segundo AnalisisLinea que se usara para leer los datos de los jugadores, este leera los archivos y ejecutara de forma similar pero en este caso al leer correctamente el formato este creara una instancia de jugador y la añadira a su arraylist de Jugador
 
-**jugarMinijuego()
+**jugarMinijuego()**
 Este metodo calculara el puntaje final recibido al jugar el minijuego indicado con el monstruo y la habilidad indicados, devolviendo un String con los resultados dependiendo si hubo bonificacion de habilidad
 
 - Recibira de parametros int el numero de las opciones seleccionadas del minijuego, el monstruo y la habilidad correspondiente a jugar.
@@ -135,5 +148,31 @@ Este metodo calculara el puntaje final recibido al jugar el minijuego indicado c
 
 - Con el metodo desplazarfinal() se movera el monstruo usado hasta el ultimo indice en su arraylist, de esta forma tener agrupados al principio todos los monstruos sin usar, dejando al final todos los que hayan sido usados, asi evitar conflictos a la hora de seleccionar los monstruos disponibles en el menu
 
+- Sumara el puntaje obtenido a la instancia del jugador
+
+- añadira a la LinkedList historial los datos del minijuego jugado separados con comas
+
+- vera si el multiplicador fue mayor de 1, significando que la habilidad usada fue efectiva, dependiendo de es9 devolvera mensajes distintos
+
+**getPotencial**
+calcula con el VisitorMinijuego y devuelve el potencial en forma de double(la hice porque vi que el potencial se mostraba antes de elegir los poderes y yo lo estaba haciendo de modo que se entregaba con el metodo anterior equise)
+
 **reiniciarSesion()**
-se devolvera el estado original de las 
+se devolvera el estado original de las instancias de los minijuegos quedando pendientes y los monstruos quedando sin uso para que se puedan jugar de nuevo en la siguiente sesion, y la linkedlist del historial vacia
+
+
+## monstruos y subclases
+
+clase que tendra los datos de caracteristicas para calcular el puntaje al jugar los minijuegos
+
+### metodos
+
+**accept()**
+metodo que entrega su instancia para que el minijuego de turno calcule el potencial devolviendolo como un double
+
+## Minijuego y subclases
+
+clase que implementara la inferface VisitorMinijuego, que usara sus netodos en sus subclases
+
+
+

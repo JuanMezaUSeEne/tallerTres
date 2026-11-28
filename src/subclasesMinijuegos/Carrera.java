@@ -41,7 +41,7 @@ public class Carrera extends Minijuego {
 	
 	@Override
 	public double visitar(Vampiro vampiro) { 
-		System.out.println("se ejecuto la caceria visitor en un "+ vampiro.getTipo());
+		//System.out.println("se ejecuto la caceria visitor en un "+ vampiro.getTipo());
 		int Velocidad = vampiro.getVelocidad();
 		int VelocidadDeVuelo = vampiro.getVelocidadDeVuelo();
 		
@@ -52,7 +52,7 @@ public class Carrera extends Minijuego {
 	
 	@Override
 	public double visitar(Momia momia) { 
-		System.out.println("se ejecuto la caceria visitor en una "+ momia.getTipo());
+		//System.out.println("se ejecuto la caceria visitor en una "+ momia.getTipo());
 		
 		int Velocidad = momia.getVelocidad();
 		int LongitudVendajes = momia.getLongitudVendajes();
@@ -64,7 +64,7 @@ public class Carrera extends Minijuego {
 	
 	@Override
 	public double visitar(HombreLobo hombrelobo) { 
-		System.out.println("se ejecuto la caceria visitor en un "+ hombrelobo.getTipo());
+		//System.out.println("se ejecuto la caceria visitor en un "+ hombrelobo.getTipo());
 		
 		int Velocidad = hombrelobo.getVelocidad();
 		int Ferocidad = hombrelobo.getFerocidad();

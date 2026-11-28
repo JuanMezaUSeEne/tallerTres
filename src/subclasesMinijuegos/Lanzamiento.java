@@ -30,7 +30,7 @@ public class Lanzamiento extends Minijuego{
 	
 	@Override
 	public double visitar(Zombi zombi) { 
-		System.out.println("se ejecuto el lanzamiento visitor en un "+ zombi.getTipo());
+		//%&&System.out.println("se ejecuto el lanzamiento visitor en un "+ zombi.getTipo());
 		
 		int Fuerza = zombi.getFuerza();
 		int Resistencia = zombi.getResistencia();
@@ -42,7 +42,7 @@ public class Lanzamiento extends Minijuego{
 	
 	@Override
 	public double visitar(Vampiro vampiro) { 
-		System.out.println("se ejecuto el lanzamiento visitor en un "+ vampiro.getTipo());
+		//System.out.println("se ejecuto el lanzamiento visitor en un "+ vampiro.getTipo());
 
 		int Fuerza = vampiro.getFuerza();
 		int VelocidadDeVuelo = vampiro.getVelocidadDeVuelo();
@@ -54,7 +54,7 @@ public class Lanzamiento extends Minijuego{
 	
 	@Override
 	public double visitar(Momia momia) { 
-		System.out.println("se ejecuto el lanzamiento visitor en una "+ momia.getTipo());
+		//System.out.println("se ejecuto el lanzamiento visitor en una "+ momia.getTipo());
 		
 		int Fuerza = momia.getFuerza();
 		int LongitudVendajes = momia.getLongitudVendajes();
@@ -66,7 +66,7 @@ public class Lanzamiento extends Minijuego{
 	
 	@Override
 	public double visitar(HombreLobo hombrelobo) { 
-		System.out.println("se ejecuto el lanzamiento visitor en un "+ hombrelobo.getTipo());
+		//System.out.println("se ejecuto el lanzamiento visitor en un "+ hombrelobo.getTipo());
 		int Fuerza = hombrelobo.getFuerza();
 		int Ferocidad = hombrelobo.getFerocidad();
 		int FaseLunar = hombrelobo.getFaseLunar();

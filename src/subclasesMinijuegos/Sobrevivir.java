@@ -30,7 +30,7 @@ private String nombre= "Lanzamiento de lapidas";
 	
 	@Override
 	public double visitar(Zombi zombi) { 
-		System.out.println("se ejecuto el lanzamiento visitor en un "+ zombi.getTipo());
+		//System.out.println("se ejecuto el lanzamiento visitor en un "+ zombi.getTipo());
 		int Vida = zombi.getVida();
 		int Resistencia = zombi.getResistencia();
 		
@@ -41,7 +41,7 @@ private String nombre= "Lanzamiento de lapidas";
 	
 	@Override
 	public double visitar(Vampiro vampiro) { 
-		System.out.println("se ejecuto el lanzamiento visitor en un "+ vampiro.getTipo());
+		//System.out.println("se ejecuto el lanzamiento visitor en un "+ vampiro.getTipo());
 		
 		int Resistencia = vampiro.getResistencia();
 		int ResistenciaAlSol = vampiro.getResistenciaAlSol();
@@ -53,7 +53,7 @@ private String nombre= "Lanzamiento de lapidas";
 	
 	@Override
 	public double visitar(Momia momia) { 
-		System.out.println("se ejecuto el lanzamiento visitor en una "+ momia.getTipo());
+		//System.out.println("se ejecuto el lanzamiento visitor en una "+ momia.getTipo());
 		
 		int Resistencia = momia.getResistencia();
 		int Vida = momia.getVida();
@@ -66,7 +66,7 @@ private String nombre= "Lanzamiento de lapidas";
 	
 	@Override
 	public double visitar(HombreLobo hombrelobo) { 
-		System.out.println("se ejecuto el lanzamiento visitor en un "+ hombrelobo.getTipo());
+		//System.out.println("se ejecuto el lanzamiento visitor en un "+ hombrelobo.getTipo());
 		
 		int Resistencia = hombrelobo.getResistencia();
 		int FaseLunar = hombrelobo.getFaseLunar();

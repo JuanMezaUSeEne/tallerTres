@@ -74,6 +74,8 @@ sino: Systema creara una nueva instancia de jugador y añadira el objeto al Arra
 
 Se despliega el primer menu "" menuSelect("Jugar un minijuego,Ver catálogo de monstruos,Ver historial de la sesión,Ver ranking de jugadores,Terminar sesión,Salir", 6) "" que estara dentro de un while, haciendo que cuando se salga del while finaliza el programa ingresando la opcion 6 en el menu
 
+## metodos
+
 **menuSelect()**
 desplegara el menu con todas las opciones a elegir y pedira escoger alguna opcion en la consola, controlara errores de opciones no validas y regresara un valor String al finalizar.
 
@@ -109,8 +111,10 @@ Este metodo devolvera un dato tipo String de los monstruos que tiene Systema en 
 
 La variable uso sera el objeto mounstro que sera instanciado cuando se elija que monstruo usar cuando se juegue un minijuego, todas las subclases tendran un metodo referente a hacer los calculos y desempeñarse en el minijuego de modo que no haya que especificar en el main o en sistema que hacer dependiendo de que monstruo se usara
 
-AnalisisLinea( String linea, int largoLinea)
-- Este metodo va a comprobar que tipo de monstruo es comparando su indice 0
+## metodos
+
+**AnalisisLinea( String linea, int largoLinea)**
+Este metodo va a comprobar que tipo de monstruo es comparando su indice 0
 - Dependiendo de cual sea su indice se le hara un analisis a las partes de la linea con el metodo analisisdatos(largoLista) que identificara si los datos pueden convertirse a los string e int correspondientes al formato de cada monstruo con un try catch y devolvera los datos convertidos dentro de un vector int para usarlos en el constructor.
 - En caso que todo sea comprobado y se devuelva un vector con el largo correspondiente (largo 6 para zombies y momias o largo 7 para vampiros y hombres lobo), se iniciara el constructor del respectivo monstruo, luego de eso se inspeccionara si el largo de la linea es mayor al largo del monstruo creado.
 - si ese el caso se iniciara de forma recursiva nuevamente el mismo metodo pero restandole a largoLinea el largo del monstruo que hayamos creado (ej si tenemos una linea de largo 10, y en esa creamos un zombie este tiene un largo de 6, la funcion recursiva iniciara su metodo con un largo de 10-6 (es decir 4). En caso de que el analisis atrape una excepcion de formato la opcion devolvera un vector de largo 1, y no se iniciara el constructor

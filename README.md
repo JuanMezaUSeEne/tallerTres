@@ -53,9 +53,9 @@ se separo la tarea de lectura y escritura de archivos en una clase separada para
 
 3.-DETALLES DE CLASES:
 ----------------------------------------------
-*MAIN*
+## MAIN
 
-### Variables 
+Variables 
 
 op1 op2 op3....:
 Seran las variables que desplegaran el menu y recibiran la opcion ingresada por comando
@@ -74,7 +74,7 @@ sino: Systema creara una nueva instancia de jugador y añadira el objeto al Arra
 
 Se despliega el primer menu "" menuSelect("Jugar un minijuego,Ver catálogo de monstruos,Ver historial de la sesión,Ver ranking de jugadores,Terminar sesión,Salir", 6) "" que estara dentro de un while, haciendo que cuando se salga del while finaliza el programa ingresando la opcion 6 en el menu
 
-## metodos
+metodos
 
 **menuSelect()**
 desplegara el menu con todas las opciones a elegir y pedira escoger alguna opcion en la consola, controlara errores de opciones no validas y regresara un valor String al finalizar.
@@ -107,11 +107,11 @@ Este metodo devolvera un dato tipo String de los monstruos que tiene Systema en 
 
 
 
-*SYSTEMA*
+## SYSTEMA
 
 La variable uso sera el objeto mounstro que sera instanciado cuando se elija que monstruo usar cuando se juegue un minijuego, todas las subclases tendran un metodo referente a hacer los calculos y desempeñarse en el minijuego de modo que no haya que especificar en el main o en sistema que hacer dependiendo de que monstruo se usara
 
-## metodos
+**metodos**
 
 **AnalisisLinea( String linea, int largoLinea)**
 Este metodo va a comprobar que tipo de monstruo es comparando su indice 0
